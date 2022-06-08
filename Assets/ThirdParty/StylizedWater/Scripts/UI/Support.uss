@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fdbd60a74a000c9ebcdaa05b1dddffd9d22f220043de8534f7858298b1dd2a30
-size 304
+.button-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+.button-title {
+    -unity-text-align: upper-left;
+    font-size: 12px;
+    padding-bottom: 0;
+    -unity-font-style: normal;
+}
+
+.button-description {
+    font-size: 10px;
+    -unity-font-style: normal;
+}

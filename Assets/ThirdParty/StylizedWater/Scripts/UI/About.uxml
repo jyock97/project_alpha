@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7dc9185b1db72fb4a976143db5d7d2e7ab5527813950ac9d2718b6caa26bd500
-size 776
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Template name="Toolbar" src="Toolbar.uxml" />
+    <ui:Instance template="Toolbar" />
+    <ui:Label text="Stylized Water For URP" style="-unity-text-align: upper-center;&#10;margin-bottom: 10px;&#10;margin-top: 10px;&#10;">
+        <Style src="About.uss" />
+    </ui:Label>
+    <ui:Label text="Version 1.1.2 (September 2020)" style="margin-bottom: 10px;&#10;margin-top: 10px;&#10;-unity-text-align: upper-center;&#10;">
+        <Style src="About.uss" />
+    </ui:Label>
+    <ui:Label text="Designed &amp; Developed by Alexander Ameye" style="-unity-text-align: upper-center;&#10;margin-bottom: 10px;&#10;margin-top: 10px;&#10;">
+        <Style src="About.uss" />
+    </ui:Label>
+</ui:UXML>

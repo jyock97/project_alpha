@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:51fbb3df289aa9dae000edaf44ac56cc676d6d68629605eed421adeb8a317b42
-size 462
+.check-title {
+    height: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.check-status {
+    height: 16px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.check-icon {
+    align-items: flex-start;
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.fix-button {
+    height: 16px;
+    margin-left: 10px;
+    margin-right: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
