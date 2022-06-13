@@ -81,18 +81,6 @@ public class BattleStageController : MonoBehaviour
         }
     }
 
-    public void InsertStatistics(CreatureController creature)
-    {
-        creature.life = 1;
-        creature.attackSpeed = 1;
-        creature.damage = 1;
-        creature.defense = 1;
-        creature.evasion = 1;
-        creature.type = "Dummy";
-
-        creature.CalculateCreatureStrenght();
-    }
-
     public void SetCreature(BattleStageFields field, CreatureController creature)
     {
         MoveCreatureToRandomPosition(field, creature, false);

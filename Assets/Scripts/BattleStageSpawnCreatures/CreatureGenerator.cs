@@ -25,22 +25,26 @@ public class CreatureGenerator : MonoBehaviour
         GameObject go = Instantiate(Creature);
         go.SetActive(true);
         CreatureController creatureController = go.AddComponent<CreatureController>();
+
+        creatureController.InsertLevelStrength(GameObject.Find("LevelController").GetComponent<LevelController>().levelPoint);
         creatureController.InsertStatisticsValues();
         testList.Add(creatureController);
         bsController.SetCreature(BattleStageController.BattleStageFields.PlayerField, creatureController);
 
         for (int i = 0; i <= Random.Range(0, 2); i++)
         {
-            InicializeEscort();
+            InicializeEscortCreature();
         }
     }
 
-    public void InicializeEscort()
+    public void InicializeEscortCreature()
     {
-        GameObject go = Instantiate(Escort);
+        GameObject go = Instantiate(Creature);
         go.SetActive(true);
         CreatureController creatureController = go.AddComponent<CreatureController>();
-        //InsertStatistics(creatureController);
+
+        creatureController.InsertLevelStrength(GameObject.Find("LevelController").GetComponent<LevelController>().levelPoint);
+        creatureController.InsertStatisticsValues();
         testList.Add(creatureController);
         bsController.SetCreature(BattleStageController.BattleStageFields.PlayerField, creatureController);
     }

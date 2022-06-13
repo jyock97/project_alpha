@@ -24,6 +24,11 @@ public class CreatureController : MonoBehaviour
     int tmDam = 5;
     int tMDam = 7;
 
+    public void InsertLevelStrength(int lvl)
+    {
+        levelStrength = lvl;
+    }
+
     public void InsertStatisticsValues()
     {
         type = "Dummy";
