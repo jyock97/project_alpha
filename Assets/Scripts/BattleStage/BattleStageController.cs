@@ -25,7 +25,7 @@ public class BattleStageController : MonoBehaviour
 
     private void Start()
     {
-        //InicializeBattleStage();
+        InicializeBattleStage();
     }
 
     public void InicializeBattleStage()
@@ -33,6 +33,7 @@ public class BattleStageController : MonoBehaviour
         _playerFieldPositions = new GameObject[FieldSize * FieldSize];
         _playerFieldFreePositions = new List<int>();
         _enemyFieldPositions = new GameObject[FieldSize * FieldSize];
+        _enemyFieldFreePositions = new List<int>();
 
         _playerField = new GameObject("PlayerField");
         _playerField.transform.SetParent(transform);
@@ -53,6 +54,7 @@ public class BattleStageController : MonoBehaviour
                 _enemyFieldPositions[i * FieldSize + j] = Instantiate(square, _enemyField.transform);
                 _enemyFieldPositions[i * FieldSize + j].SetActive(true);
                 _enemyFieldPositions[i * FieldSize + j].transform.localPosition = new Vector3(i + i * xPadding, 0, j + j * zPadding);
+                _enemyFieldFreePositions.Add(i * FieldSize + j);
             }
         }
     }
@@ -115,6 +117,7 @@ public class BattleStageController : MonoBehaviour
                 break;
         }
 
+        creature.field = field;
         MoveCreatureToRandomPosition(selectedFieldFreePositions, selectedFieldPositions, creature, saveCreatureLastPosition);
     }
 
