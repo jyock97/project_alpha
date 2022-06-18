@@ -40,6 +40,11 @@ public class CreaturesManager : MonoBehaviour
         }
     }
 
+    public void RemoveEnemyCreature(CreatureController creatureController)
+    {
+        enemyCreatures.Remove(creatureController);
+    }
+
     public void ClearEnemies()
     {
         foreach (CreatureController creature in enemyCreatures)

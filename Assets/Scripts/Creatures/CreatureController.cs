@@ -31,20 +31,23 @@ public class CreatureController : MonoBehaviour
     private int tmDam = 3;
     private int tMDam = 5;
 
+    private GameController _gameController;
     private BattleStageController _battleStageController;
     private CreaturesManager _creaturesManager;
+    private bool _isDeath;
     private bool _isBehaving;
     private float _currentAttackTime;
 
     private void Start()
     {
+        _gameController = FindObjectOfType<GameController>();
         _battleStageController = FindObjectOfType<BattleStageController>();
         _creaturesManager = FindObjectOfType<CreaturesManager>();
     }
     
     private void Update()
     {
-        if (_isBehaving)
+        if (_isBehaving && !_isDeath)
         {
             if (Time.time > _currentAttackTime)
             {
@@ -91,6 +94,11 @@ public class CreatureController : MonoBehaviour
     {
         _isBehaving = true;
         UpdateAttackTime();
+    }
+
+    public void EndBehaviour()
+    {
+        _isBehaving = false;
     }
     
     private void UpdateAttackTime()
@@ -141,7 +149,22 @@ public class CreatureController : MonoBehaviour
         
         if (life <= 0)
         {
-            //TODO change this destroy to a die anim and dont destroy it if Player Creature
+            //TODO change this destroy to a die anim and dont destroy it if it is a Player Creature
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        _isDeath = true;
+        if (field == BattleStageController.BattleStageFields.PlayerField)
+        {
+            _gameController.PlayerCreatureDefeated();
+        }
+        else
+        {
+            _gameController.EnemyCreatureDefeated();
+            _creaturesManager.RemoveEnemyCreature(this);
             Destroy(gameObject);
         }
     }
