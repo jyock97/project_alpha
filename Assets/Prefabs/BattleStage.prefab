@@ -48,7 +48,6 @@ MonoBehaviour:
   square: {fileID: 661943663232845908}
   xPadding: 0.3
   zPadding: 0.5
-  test: {fileID: 0}
 --- !u!1 &661943663232845908
 GameObject:
   m_ObjectHideFlags: 0

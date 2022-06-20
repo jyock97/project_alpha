@@ -22,13 +22,7 @@ public class BattleStageController : MonoBehaviour
     private GameObject[] _enemyFieldPositions;
     private List<int> _enemyFieldFreePositions;
 
-
-    private void Start()
-    {
-        InicializeBattleStage();
-    }
-
-    public void InicializeBattleStage()
+    public void InitializeBattleStage()
     {
         _playerFieldPositions = new GameObject[FieldSize * FieldSize];
         _playerFieldFreePositions = new List<int>();
@@ -37,9 +31,10 @@ public class BattleStageController : MonoBehaviour
 
         _playerField = new GameObject("PlayerField");
         _playerField.transform.SetParent(transform);
+        _playerField.transform.localPosition = Vector3.zero;
         _enemyField = new GameObject("EnemyField");
         _enemyField.transform.SetParent(transform);
-        _enemyField.transform.position = new Vector3(-2f, 0, FieldSize - 1 + (FieldSize - 1) * zPadding);
+        _enemyField.transform.localPosition = new Vector3(-2f, 0, FieldSize - 1 + (FieldSize - 1) * zPadding);
         _enemyField.transform.rotation = Quaternion.Euler(0, 180, 0);
 
         for (int i = 0; i < FieldSize; i++)
@@ -56,30 +51,6 @@ public class BattleStageController : MonoBehaviour
                 _enemyFieldPositions[i * FieldSize + j].transform.localPosition = new Vector3(i + i * xPadding, 0, j + j * zPadding);
                 _enemyFieldFreePositions.Add(i * FieldSize + j);
             }
-        }
-    }
-
-    // TODO remove it later when testing is no longer needed
-    [SerializeField] private GameObject Creature;
-    [SerializeField] private GameObject Escort;
-    private List<CreatureController> testList = new List<CreatureController>();
-    private void Update()
-    {
-        // TODO remove it later when testing is no longer needed
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            /*GameObject go = Instantiate(test);
-            go.SetActive(true);
-            CreatureController creatureController = go.AddComponent<CreatureController>();
-            testList.Add(creatureController);
-            SetCreature(BattleStageFields.PlayerField, creatureController);*/
-            //InicializeCreature();
-        }
-
-        // TODO remove it later when testing is no longer needed
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            MoveCreatureToRandomPosition(BattleStageFields.PlayerField, testList[Random.Range(0, testList.Count)]);
         }
     }
 
