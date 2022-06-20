@@ -38,7 +38,7 @@ public class CreatureController : MonoBehaviour
     private bool _isBehaving;
     private float _currentAttackTime;
 
-    private void Start()
+    private void Awake()
     {
         _gameController = FindObjectOfType<GameController>();
         _battleStageController = FindObjectOfType<BattleStageController>();
@@ -108,15 +108,7 @@ public class CreatureController : MonoBehaviour
 
     private void Attack()
     {
-        List<CreatureController> creatureList;
-        if (field == BattleStageController.BattleStageFields.PlayerField)
-        {
-            creatureList = _creaturesManager.enemyCreatures;
-        }
-        else
-        {
-            creatureList = _creaturesManager.playerCreatures;
-        }
+        List<CreatureController> creatureList = field == BattleStageController.BattleStageFields.PlayerField ? _creaturesManager.enemyCreatures : _creaturesManager.playerCreatures;
 
         float currentDistance = float.MaxValue;
         CreatureController currentCreature = creatureList[0];
