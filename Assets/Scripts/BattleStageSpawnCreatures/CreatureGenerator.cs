@@ -8,6 +8,8 @@ public class CreatureGenerator : MonoBehaviour
     [SerializeField] private GameObject Creature;
     [SerializeField] private GameObject Escort;
     private List<CreatureController> testList = new List<CreatureController>();
+    [SerializeField] ItemForms possibleItemAppearance;
+
     void Start()
     {
         InicializeCriatures();
@@ -22,14 +24,7 @@ public class CreatureGenerator : MonoBehaviour
 
     public void InicializeCreature()
     {
-        GameObject go = Instantiate(Creature);
-        go.SetActive(true);
-        CreatureController creatureController = go.AddComponent<CreatureController>();
-
-        creatureController.InsertLevelStrength(GameObject.Find("LevelController").GetComponent<LevelController>().levelPoint);
-        creatureController.InsertStatisticsValues();
-        testList.Add(creatureController);
-        bsController.SetCreature(BattleStageController.BattleStageFields.PlayerField, creatureController);
+        InicializeEscortCreature();
 
         for (int i = 0; i <= Random.Range(0, 2); i++)
         {
@@ -45,6 +40,8 @@ public class CreatureGenerator : MonoBehaviour
 
         creatureController.InsertLevelStrength(GameObject.Find("LevelController").GetComponent<LevelController>().levelPoint);
         creatureController.InsertStatisticsValues();
+        creatureController.possibleItemForm = possibleItemAppearance;
+
         testList.Add(creatureController);
         bsController.SetCreature(BattleStageController.BattleStageFields.PlayerField, creatureController);
     }

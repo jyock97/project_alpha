@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 661943662886605349, guid: 3212c1084e9a4424a9b4ed26ed7fcfb9, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 661943662886605349, guid: 3212c1084e9a4424a9b4ed26ed7fcfb9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -403,7 +403,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &1564542774
 MonoBehaviour:
@@ -537,5 +537,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreatureGenerator
       objectReference: {fileID: 0}
+    - target: {fileID: 6032010809438276621, guid: 86850c07f2f757d4b892a473810e5db1, type: 3}
+      propertyPath: possibleItemAppearance
+      value: 
+      objectReference: {fileID: 11400000, guid: 60687793011b8a74eae2a68e6b5e07ad, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86850c07f2f757d4b892a473810e5db1, type: 3}

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CreatureController : MonoBehaviour
@@ -24,6 +25,51 @@ public class CreatureController : MonoBehaviour
     int tmDam = 5;
     int tMDam = 7;
 
+    public ItemForms possibleItemForm;
+    public int droppeableItem;
+
+    public void Update()
+    {
+        if (life == 0)
+        {
+            life = -1;
+            StartCoroutine(CreatureDefeated());    
+        }
+    }
+
+    IEnumerator CreatureDefeated()
+    {
+        Debug.Log("Entre");
+        yield return new WaitForSeconds(1);
+
+        GameObject skin = possibleItemForm.itemForm[Random.Range(0, possibleItemForm.itemForm.Count - 1)];
+
+        /*Component[] compos = skin.GetComponents(typeof(Component));
+        foreach (Component component in compos)
+        {
+            Debug.Log(component.ToString());
+        }*/
+
+        GameObject item = Instantiate(skin, transform);
+
+        /*Component[] components = item.GetComponents(typeof(Component));
+        foreach (Component component in components)
+        {
+            Debug.Log(component.ToString());
+        }*/
+
+        item.gameObject.transform.parent = null;
+        item.gameObject.transform.position = transform.position;
+        
+        if(!item.GetComponent<ItemController>())
+            item.AddComponent<ItemController>();
+
+        item.GetComponent<ItemController>().SetRarity();
+        item.GetComponent<ItemController>().SetItemModifiers();
+
+        Destroy(this.gameObject);
+    }
+
     public void InsertLevelStrength(int lvl)
     {
         levelStrength = lvl;
@@ -49,6 +95,5 @@ public class CreatureController : MonoBehaviour
     public void CalculateCreatureStrenght()
     {
         creatureStrength = (life * defense * evasion) + (damage * attackSpeed);
-        Debug.Log("Creature Strenght: " + creatureStrength);
     }
 }
