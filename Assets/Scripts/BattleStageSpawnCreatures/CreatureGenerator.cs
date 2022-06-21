@@ -1,48 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CreatureGenerator : MonoBehaviour
 {
-    BattleStageController bsController;
-    [SerializeField] private GameObject Creature;
-    [SerializeField] private GameObject Escort;
-    private List<CreatureController> testList = new List<CreatureController>();
-    [SerializeField] ItemForms possibleItemAppearance;
+    [SerializeField] private GameObject creature;
+    
+    private BattleStageController _bsController;
+    private CreaturesManager _creaturesManager;
 
-    void Start()
+    private void Awake()
     {
-        InicializeCriatures();
+        _bsController = FindObjectOfType<BattleStageController>();
+        _creaturesManager = FindObjectOfType<CreaturesManager>();
     }
 
-    void InicializeCriatures()
+    public int GenerateCreatures()
     {
-        bsController = GameObject.Find("BattleStage").GetComponent<BattleStageController>();
-        bsController.InicializeBattleStage();
-        InicializeCreature();
-    }
-
-    public void InicializeCreature()
-    {
-        InicializeEscortCreature();
-
-        for (int i = 0; i <= Random.Range(0, 2); i++)
+        _creaturesManager.ClearEnemies();
+        int creaturesToSpawn = Random.Range(2, 3);
+        
+        for (int i = 0; i < creaturesToSpawn; i++)
         {
-            InicializeEscortCreature();
+            CreateEnemyCreature();
         }
+
+        return creaturesToSpawn;
     }
 
-    public void InicializeEscortCreature()
+    private void CreateEnemyCreature()
     {
-        GameObject go = Instantiate(Creature);
+        GameObject go = Instantiate(creature);
         go.SetActive(true);
-        CreatureController creatureController = go.AddComponent<CreatureController>();
-
-        creatureController.InsertLevelStrength(GameObject.Find("LevelController").GetComponent<LevelController>().levelPoint);
+        CreatureController creatureController = go.GetComponent<CreatureController>();
         creatureController.InsertStatisticsValues();
-        creatureController.possibleItemForm = possibleItemAppearance;
-
-        testList.Add(creatureController);
-        bsController.SetCreature(BattleStageController.BattleStageFields.PlayerField, creatureController);
+        _bsController.SetCreature(BattleStageController.BattleStageFields.EnemyField, creatureController);
+        _creaturesManager.enemyCreatures.Add(creatureController);
     }
 }
