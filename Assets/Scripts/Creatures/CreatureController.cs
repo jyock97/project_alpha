@@ -19,9 +19,12 @@ public class CreatureController : MonoBehaviour
 
     public float levelStrength = 500;
     public float creatureStrength;
-
+    
     public GameObject normalProjectilePrefab;
     public LayerMask targetLayerMask;
+    
+    public ItemForms possibleItemForm;
+    public int droppeableItem;
 
     private int splitValue = 12;
     private int tmLm = 13;
@@ -37,8 +40,8 @@ public class CreatureController : MonoBehaviour
     private bool _isDeath;
     private bool _isBehaving;
     private float _currentAttackTime;
-
-    private void Awake()
+    
+     private void Awake()
     {
         _gameController = FindObjectOfType<GameController>();
         _battleStageController = FindObjectOfType<BattleStageController>();
@@ -55,6 +58,44 @@ public class CreatureController : MonoBehaviour
                 UpdateAttackTime();
             }
         }
+    }
+
+    IEnumerator CreatureDefeated()
+    {
+        Debug.Log("Entre");
+        yield return new WaitForSeconds(1);
+
+        GameObject skin = possibleItemForm.itemForm[Random.Range(0, possibleItemForm.itemForm.Count - 1)];
+
+        /*Component[] compos = skin.GetComponents(typeof(Component));
+        foreach (Component component in compos)
+        {
+            Debug.Log(component.ToString());
+        }*/
+
+        GameObject item = Instantiate(skin, transform);
+
+        /*Component[] components = item.GetComponents(typeof(Component));
+        foreach (Component component in components)
+        {
+            Debug.Log(component.ToString());
+        }*/
+
+        item.gameObject.transform.parent = null;
+        item.gameObject.transform.position = transform.position;
+        
+        if(!item.GetComponent<ItemController>())
+            item.AddComponent<ItemController>();
+
+        item.GetComponent<ItemController>().SetRarity();
+        item.GetComponent<ItemController>().SetItemModifiers();
+
+        Destroy(this.gameObject);
+    }
+
+    public void InsertLevelStrength(int lvl)
+    {
+        levelStrength = lvl;
     }
 
     public void InsertStatisticsValues()
@@ -77,6 +118,7 @@ public class CreatureController : MonoBehaviour
     public void CalculateCreatureStrenght()
     {
         creatureStrength = (life * defense * evasion) + (damage * attackSpeed);
+        
         Debug.Log("Creature Strenght: " + creatureStrength);
     }
 
