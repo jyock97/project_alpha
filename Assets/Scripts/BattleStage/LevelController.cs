@@ -1,8 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    public int levelPoint;
+    public float globalCreatureStrength;
+    public float currentItemStrength;
+    public float minItemStrength;
+    public float maxItemStrength;
+    public float itemLevelIncreaseRatio;
+
+    private void Start()
+    {
+        currentItemStrength = minItemStrength;
+    }
 }

@@ -118,9 +118,9 @@ MonoBehaviour:
   damage: 0
   attackSpeed: 0
   type: 
-  levelStrength: 500
   creatureStrength: 0
   normalProjectilePrefab: {fileID: 7069157025550678368, guid: 197bcb069a91f1544a316acd2f92f25e, type: 3}
+  itemPrefab: {fileID: 2048575642930003193, guid: c4427774e33b6b24b87a1400d1e221da, type: 3}
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 64

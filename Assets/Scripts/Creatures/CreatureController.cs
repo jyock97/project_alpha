@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -17,15 +16,13 @@ public class CreatureController : MonoBehaviour
     public float attackSpeed;
     
     public string type;
-
-    public float levelStrength = 500;
+    
     public float creatureStrength;
     
     public GameObject normalProjectilePrefab;
+    public GameObject itemPrefab;
     public LayerMask targetLayerMask;
-    
-    public ItemForms possibleItemForm;
-    public int droppeableItem;
+
 
     private int splitValue = 12;
     private int tmLm = 13;
@@ -38,6 +35,7 @@ public class CreatureController : MonoBehaviour
     private GameController _gameController;
     private BattleStageController _battleStageController;
     private CreaturesManager _creaturesManager;
+    private LevelController _levelController;
     private bool _isDeath;
     private bool _isBehaving;
     private float _currentAttackTime;
@@ -47,6 +45,7 @@ public class CreatureController : MonoBehaviour
         _gameController = FindObjectOfType<GameController>();
         _battleStageController = FindObjectOfType<BattleStageController>();
         _creaturesManager = FindObjectOfType<CreaturesManager>();
+        _levelController = FindObjectOfType<LevelController>();
     }
     
     private void Update()
@@ -61,49 +60,11 @@ public class CreatureController : MonoBehaviour
         }
     }
 
-    IEnumerator CreatureDefeated()
-    {
-        Debug.Log("Entre");
-        yield return new WaitForSeconds(1);
-
-        GameObject skin = possibleItemForm.itemForm[Random.Range(0, possibleItemForm.itemForm.Count - 1)];
-
-        /*Component[] compos = skin.GetComponents(typeof(Component));
-        foreach (Component component in compos)
-        {
-            Debug.Log(component.ToString());
-        }*/
-
-        GameObject item = Instantiate(skin, transform);
-
-        /*Component[] components = item.GetComponents(typeof(Component));
-        foreach (Component component in components)
-        {
-            Debug.Log(component.ToString());
-        }*/
-
-        item.gameObject.transform.parent = null;
-        item.gameObject.transform.position = transform.position;
-        
-        if(!item.GetComponent<ItemController>())
-            item.AddComponent<ItemController>();
-
-        item.GetComponent<ItemController>().SetRarity();
-        item.GetComponent<ItemController>().SetItemModifiers();
-
-        Destroy(this.gameObject);
-    }
-
-    public void InsertLevelStrength(int lvl)
-    {
-        levelStrength = lvl;
-    }
-
     public void InsertStatisticsValues()
     {
         type = "Dummy";
 
-        float tmpVal1 = levelStrength / splitValue;
+        float tmpVal1 = _levelController.globalCreatureStrength / splitValue;
         float tmpVal2 = tmpVal1 * (splitValue - 1);
         life = Random.Range(tmpVal2 / tMLm, tmpVal2 / tmLm);
 
@@ -113,10 +74,10 @@ public class CreatureController : MonoBehaviour
         damage = (int) Random.Range(tmpVal1 / tMDam, tmpVal1 / tmDam);
         attackSpeed = MathF.Round(tmpVal1 / damage, 3);
 
-        CalculateCreatureStrenght();
+        CalculateCreatureStrength();
     }
 
-    public void CalculateCreatureStrenght()
+    public void CalculateCreatureStrength()
     {
         creatureStrength = (life * defense * evasion) + (damage * attackSpeed);
         
@@ -184,7 +145,6 @@ public class CreatureController : MonoBehaviour
         
         if (life <= 0)
         {
-            //TODO change this destroy to a die anim and dont destroy it if it is a Player Creature
             Die();
         }
     }
@@ -192,6 +152,9 @@ public class CreatureController : MonoBehaviour
     private void Die()
     {
         _isDeath = true;
+        GameObject go = Instantiate(itemPrefab);
+        go.transform.position = transform.position;
+        
         if (field == BattleStageController.BattleStageFields.PlayerField)
         {
             _gameController.PlayerCreatureDefeated();
