@@ -21,13 +21,8 @@ public class BattleStageController : MonoBehaviour
     private GameObject _enemyField;
     private GameObject[] _enemyFieldPositions;
     private List<int> _enemyFieldFreePositions;
-
+    
     public void InitializeBattleStage()
-    {
-        //InicializeBattleStage();
-    }
-
-    public void InicializeBattleStage()
     {
         _playerFieldPositions = new GameObject[FieldSize * FieldSize];
         _playerFieldFreePositions = new List<int>();
@@ -57,18 +52,6 @@ public class BattleStageController : MonoBehaviour
                 _enemyFieldFreePositions.Add(i * FieldSize + j);
             }
         }
-    }
-
-    public void InsertStatistics(CreatureController creature)
-    {
-        creature.life = 1;
-        creature.attackSpeed = 1;
-        creature.damage = 1;
-        creature.defense = 1;
-        creature.evasion = 1;
-        creature.type = "Dummy";
-
-        creature.CalculateCreatureStrenght();
     }
 
     public void SetCreature(BattleStageFields field, CreatureController creature)

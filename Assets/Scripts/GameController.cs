@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour
         _cameraTransition.FipBlackout();
         yield return new WaitForSeconds(blackoutWaitTime);
         // spawn enemies
-        _creatureGenerator.GenerateCreatures();
+        _battleCurrentEnemyCreatures = _creatureGenerator.GenerateCreatures();
         // camera transition 
         _cameraTransition.FlipCameras();
         _cameraTransition.FipBlackout();
