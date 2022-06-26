@@ -44,4 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed729f2fa5d017c4d8aeea66c8a1a82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelPoint: 500
+  globalCreatureStrength: 500
+  currentItemStrength: 100
+  minItemStrength: 100
+  maxItemStrength: 300
+  itemLevelIncreaseRatio: 15

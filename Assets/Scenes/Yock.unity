@@ -345,41 +345,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelController
       objectReference: {fileID: 0}
-    - target: {fileID: 8038263437075326924, guid: 3597ca61c61fda140836c72ad923f01b, type: 3}
-      propertyPath: maxItemStrength
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 8038263437075326924, guid: 3597ca61c61fda140836c72ad923f01b, type: 3}
-      propertyPath: minItemStrength
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8038263437075326924, guid: 3597ca61c61fda140836c72ad923f01b, type: 3}
-      propertyPath: currentItemStrength
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8038263437075326924, guid: 3597ca61c61fda140836c72ad923f01b, type: 3}
-      propertyPath: globalCreatureStrength
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 8038263437075326924, guid: 3597ca61c61fda140836c72ad923f01b, type: 3}
-      propertyPath: itemLevelIncreaseRatio
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 8038263437075326925, guid: 3597ca61c61fda140836c72ad923f01b, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8038263437075326925, guid: 3597ca61c61fda140836c72ad923f01b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.929144
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8038263437075326925, guid: 3597ca61c61fda140836c72ad923f01b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.582307
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8038263437075326925, guid: 3597ca61c61fda140836c72ad923f01b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.617377
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8038263437075326925, guid: 3597ca61c61fda140836c72ad923f01b, type: 3}
       propertyPath: m_LocalRotation.w

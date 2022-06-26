@@ -7,6 +7,8 @@ public class ItemController : MonoBehaviour
 {
     public ItemForms items;
 
+    public string rarity; 
+
     public float lifeMod;
     public float defenseMod;
     public float evasionMod;
@@ -36,6 +38,7 @@ public class ItemController : MonoBehaviour
 
         Instantiate(itemForm, transform);
         CalculateValues();
+        SetRarity();
     }
 
     private void CalculateValues()
@@ -50,68 +53,48 @@ public class ItemController : MonoBehaviour
         damageMod = (int) Random.Range(tmpVal1 / tMDam, tmpVal1 / tmDam);
         attackSpeedMod = MathF.Round(tmpVal1 / damageMod, 3);
     }
-    
-    public void SetItemModifiers()
-    {
-//        switch (rarity)
-//        {
-//            case "Normal":
-//                InsertModifiers(2);
-//                break;
-//
-//            case "Rare":
-//                InsertModifiers(3);
-//                break;
-//
-//            case "Legendary":
-//                InsertModifiers(4);
-//                break;
-//        }
-    }
 
-    void InsertModifiers(int numberModifiers)
+    private void SetRarity()
     {
-//        List<int> modIndex = new List<int>();
-//
-//        for (int i = 0; i < numberModifiers; i++)
-//        {
-//            int randomIndex = Random.Range(0, increments.Length - 1);
-//            while (RepeatedIndex(modIndex, randomIndex))
-//            {
-//                randomIndex = Random.Range(0, increments.Length - 1);
-//            }
-//            increments[randomIndex] += Random.Range(5, 15);
-//            modIndex.Add(randomIndex);
-//        }
-    }
+        List<float> l = new List<float> {lifeMod, defenseMod, evasionMod, damageMod, attackSpeedMod};
 
-    bool RepeatedIndex(List<int> indexList, int newIndex)
-    {
-        for (int i = 0; i < indexList.Count; i++)
+        // calculate rarity
+        int valuesToClear;
+        float randomValue = Random.value;
+        if (randomValue < 0.1)
         {
-            if (indexList[i] == newIndex)
-                return true;
+            rarity = "Legendary";
+            valuesToClear = 1;
+        } else if (randomValue < 0.25)
+        {
+            rarity = "Rare";
+            valuesToClear = 2;
         }
-        return false;
-    }
-
-    public void SetRarity()
-    {
-        int random = Random.Range(0, 10);
-
-        if (random > 9)
+        else
         {
-//            rarity = "Legendary";
-            return;
+            rarity = "Normal";
+            valuesToClear = 3;
         }
 
-        else if (random > 5)
+        // Clear values
+        while (valuesToClear != 0)
         {
-//            rarity = "Rare";
-            return;
-        }
+            int randomIndex = Random.Range(0, l.Count);
+            if (l[randomIndex] <= 0.01)
+            {
+                continue;
+            }
 
-//        else
-//            rarity = "Normal";
+            l[randomIndex] = 0;
+            
+            valuesToClear--;
+        }
+        
+        // Recover values
+        lifeMod = l[0];
+        defenseMod = l[1];
+        evasionMod = l[2];
+        damageMod = l[3];
+        attackSpeedMod = l[4];
     }
 }
