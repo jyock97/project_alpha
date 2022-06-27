@@ -29,14 +29,15 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         //TODO this is just for testing, remove it later when creatures spawn itselfs
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartBattle();
-        }
+            StartBattle(null);
+        }*/
     }
 
-    public void StartBattle()
+    public void StartBattle(GameObject preCreature)
     {
+        _creatureGenerator.previousCreature = preCreature;
         StartCoroutine(IE_StartBattle());
     }
 

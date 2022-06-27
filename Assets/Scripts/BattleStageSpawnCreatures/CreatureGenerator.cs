@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CreatureGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject creature;
-    
+
+    public GameObject previousCreature;
+
     private BattleStageController _bsController;
     private CreaturesManager _creaturesManager;
 
@@ -16,7 +19,10 @@ public class CreatureGenerator : MonoBehaviour
     public int GenerateCreatures()
     {
         _creaturesManager.ClearEnemies();
-        int creaturesToSpawn = Random.Range(2, 3);
+
+        CreateEnemyCreature(previousCreature);
+
+        int creaturesToSpawn = Random.Range(1, 2);
         
         for (int i = 0; i < creaturesToSpawn; i++)
         {
@@ -26,11 +32,33 @@ public class CreatureGenerator : MonoBehaviour
         return creaturesToSpawn;
     }
 
+    private void CreateEnemyCreature(GameObject prevCreature)
+    {
+        GameObject go = Instantiate(prevCreature);
+        go.SetActive(true);
+
+        CreatureIA creatureIA = go.GetComponent<CreatureIA>();
+        creatureIA.enabled = false;
+        go.GetComponent<NavMeshAgent>().enabled = false;
+
+        CreatureController creatureController = go.GetComponent<CreatureController>();
+        creatureController.enabled = true;
+        creatureController.InsertStatisticsValues();
+        _bsController.SetCreature(BattleStageController.BattleStageFields.EnemyField, creatureController);
+        _creaturesManager.enemyCreatures.Add(creatureController);
+    }
+
     private void CreateEnemyCreature()
     {
         GameObject go = Instantiate(creature);
         go.SetActive(true);
+
+        CreatureIA creatureIA = go.GetComponent<CreatureIA>();
+        creatureIA.enabled = false;
+        go.GetComponent<NavMeshAgent>().enabled = false;
+
         CreatureController creatureController = go.GetComponent<CreatureController>();
+        creatureController.enabled = true;
         creatureController.InsertStatisticsValues();
         _bsController.SetCreature(BattleStageController.BattleStageFields.EnemyField, creatureController);
         _creaturesManager.enemyCreatures.Add(creatureController);
