@@ -92,7 +92,7 @@ public class GameController : MonoBehaviour
         {
             creatureController.EndBehaviour();
         }
-        yield return new WaitForSeconds(2); // TODO make this a variable value
+        yield return new WaitForSeconds(3); // TODO make this a variable value
 
         // collect Items
         
