@@ -92,6 +92,7 @@ public class BattleStageController : MonoBehaviour
             if (saveCreatureLastPosition) selectedFieldFreePositions.Add(creature.currentPosition);
 
             creature.currentPosition = freePosition;
+            Debug.Log("Real position: " + selectedFieldPositions[freePosition].transform.position);
             creature.transform.position = selectedFieldPositions[freePosition].transform.position;
         }
     }

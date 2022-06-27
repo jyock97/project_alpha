@@ -14,8 +14,8 @@ TagManager:
   - UI
   - PlayerCreature
   - EnemyCreature
-  - 
-  - 
+  - Walkable
+  - Player
   - 
   - 
   - 

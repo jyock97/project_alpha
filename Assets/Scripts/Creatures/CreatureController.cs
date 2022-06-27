@@ -23,7 +23,6 @@ public class CreatureController : MonoBehaviour
     public GameObject itemPrefab;
     public LayerMask targetLayerMask;
 
-
     private int splitValue = 12;
     private int tmLm = 13;
     private int tMLm = 17;
