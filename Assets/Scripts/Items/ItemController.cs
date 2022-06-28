@@ -125,11 +125,5 @@ public class ItemController : MonoBehaviour
         stats.evasionMod = l[2];
         stats.damageMod = l[3];
         stats.attackSpeedMod = l[4];
-        stats.attackSpeedMod = l[4];
-        stats.attackSpeedMod = l[4];
-        stats.attackSpeedMod = l[4];
-        stats.attackSpeedMod = l[4];
-        stats.attackSpeedMod = l[4];
-        stats.attackSpeedMod = l[4];
     }
 }
