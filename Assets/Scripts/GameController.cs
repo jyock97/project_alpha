@@ -93,9 +93,10 @@ public class GameController : MonoBehaviour
         {
             creatureController.EndBehaviour();
         }
+        
+        // collect Items
         yield return new WaitForSeconds(3); // TODO make this a variable value
 
-        // collect Items
         
         // camera transition black
         _cameraTransition.FipBlackout();
