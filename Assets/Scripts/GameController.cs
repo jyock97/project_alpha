@@ -26,15 +26,6 @@ public class GameController : MonoBehaviour
         _creaturesManager.InitPlayerCreatures();
     }
 
-    private void Update()
-    {
-        //TODO this is just for testing, remove it later when creatures spawn itselfs
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartBattle(null);
-        }*/
-    }
-
     public void StartBattle(GameObject preCreature)
     {
         _creatureGenerator.previousCreature = preCreature;
