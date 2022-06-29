@@ -5,7 +5,7 @@ using UnityEngine;
 public class CreatureSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject creature;
-    List<GameObject> creatureList = new List<GameObject>();
+    public List<GameObject> creatureList = new List<GameObject>();
     bool canGenerate = true;
     [SerializeField] float timeToGenerate;
 
@@ -18,13 +18,6 @@ public class CreatureSpawner : MonoBehaviour
     {
         if (creatureList.Count < 1)
             canGenerate = true;
-
-        //This is only a test, we must delete later, when all the code works correctly
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            deleteCreature();
-        }
-        //
     }
 
     IEnumerator waitToGenerate()
@@ -48,9 +41,10 @@ public class CreatureSpawner : MonoBehaviour
         CreatureController creatureController = go.GetComponent<CreatureController>();
         creatureController.InsertStatisticsValues();
         creatureList.Add(go);
+        go.transform.SetParent(this.gameObject.transform);
     }
 
-    void deleteCreature()
+    public void deleteCreature()
     {
         Destroy(creatureList[0].gameObject);
         creatureList = new List<GameObject>();

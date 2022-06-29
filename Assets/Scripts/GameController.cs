@@ -105,5 +105,17 @@ public class GameController : MonoBehaviour
         // camera transition 
         _cameraTransition.FlipCameras();
         _cameraTransition.FipBlackout();
+
+        if (_creatureGenerator.previousCreature.GetComponent<CreatureController>().isBoss == 1)
+        {
+            Destroy(_creatureGenerator.previousCreature);
+            //TODO: when the Boss dies, the game is finished.
+        }
+        else
+        {
+            GameObject previousSpawner = _creatureGenerator.previousCreature.GetComponent<CreatureIA>().parent;
+            if (previousSpawner.GetComponent<CreatureSpawner>())
+                previousSpawner.GetComponent<CreatureSpawner>().deleteCreature();
+        }
     }
 }

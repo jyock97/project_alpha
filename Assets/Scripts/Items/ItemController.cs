@@ -59,6 +59,7 @@ public class ItemController : MonoBehaviour
     {
         if (Time.time > _flightToPlayerTimeCurrent)
         {
+            Debug.Log(_player.name);
             transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Time.deltaTime * 4);
         }
 
