@@ -8,17 +8,14 @@ public class Movement : MonoBehaviour
     Vector3 direction;
     [SerializeField] float speed;
     [SerializeField] float rotationSpeed;
-    [SerializeField] float jumpForce;
-
-    [SerializeField] float turnSmoothVelocity;
 
     Rigidbody rb;
-    CharacterController controller;
+    Animator anim;
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -28,29 +25,22 @@ public class Movement : MonoBehaviour
 
         direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if (direction.magnitude > 0.1f)
-        {
-            playerMovementControler();
-        }
+        anim.SetFloat("speed", direction.magnitude);
 
-        
-        //playerRotationControler();
+        if (direction.magnitude > 0.1f)
+            playerMovementControler();
+
+        playerRotationControler();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            playerJumpController();
+            anim.Play("Victory");
         }
     }
 
     void playerMovementControler()
     {
-        rb.velocity = transform.TransformDirection(new Vector3(0, 0, speed * vertical));
-        //controller.Move(direction * speed * Time.deltaTime);
-
-        float turnSmoothVelocity;
-
-        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-        //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref 0.1f, turnSmoothVelocity);
+        rb.velocity = transform.TransformDirection(new Vector3(0, 0, speed * direction.z));
     }
 
     void playerRotationControler()
@@ -59,10 +49,5 @@ public class Movement : MonoBehaviour
             transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
         else if (horizontal > 0)
             transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
-    }
-
-    void playerJumpController()
-    {
-        rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
     }
 }
