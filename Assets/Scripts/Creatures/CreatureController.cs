@@ -41,7 +41,7 @@ public class CreatureController : MonoBehaviour
 
     string[] creaturesTypes = { "Water", "Plant", "Earth" };
 
-    public int isBoss;
+    public bool isBoss;
 
      private void Awake()
     {
@@ -67,7 +67,7 @@ public class CreatureController : MonoBehaviour
     {
         float tmpVal1;
 
-        if (isBoss == 1)
+        if (isBoss)
         {
             type = "Fire";
 
