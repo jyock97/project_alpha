@@ -43,7 +43,7 @@ public class CreatureGenerator : MonoBehaviour
 
         CreatureController creatureController = go.GetComponent<CreatureController>();
         creatureController.enabled = true;
-        creatureController.InsertStatisticsValues();
+        //creatureController.InsertStatisticsValues();
         _bsController.SetCreature(BattleStageController.BattleStageFields.EnemyField, creatureController);
         _creaturesManager.enemyCreatures.Add(creatureController);
     }
@@ -59,7 +59,7 @@ public class CreatureGenerator : MonoBehaviour
 
         CreatureController creatureController = go.GetComponent<CreatureController>();
         creatureController.enabled = true;
-        creatureController.InsertStatisticsValues();
+        //creatureController.InsertStatisticsValues();
         _bsController.SetCreature(BattleStageController.BattleStageFields.EnemyField, creatureController);
         _creaturesManager.enemyCreatures.Add(creatureController);
     }

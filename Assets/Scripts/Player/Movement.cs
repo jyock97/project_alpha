@@ -9,8 +9,10 @@ public class Movement : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float rotationSpeed;
 
+    public bool inBattle = false;
+
     Rigidbody rb;
-    Animator anim;
+    public Animator anim;
 
     void Start()
     {

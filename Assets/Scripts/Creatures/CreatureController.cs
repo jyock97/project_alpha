@@ -45,6 +45,8 @@ public class CreatureController : MonoBehaviour
         _battleStageController = FindObjectOfType<BattleStageController>();
         _creaturesManager = FindObjectOfType<CreaturesManager>();
         _levelController = FindObjectOfType<LevelController>();
+
+        InsertStatisticsValues();
     }
     
     private void Update()

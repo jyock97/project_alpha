@@ -12,12 +12,16 @@ public class GameController : MonoBehaviour
     private int _battleCurrentPlayerCreatures;
     private int _battleCurrentEnemyCreatures;
 
+    private GameObject player;
+
     private void Awake()
     {
         _creaturesManager = FindObjectOfType<CreaturesManager>();
         _cameraTransition = FindObjectOfType<CameraTransition>();
         _battleStageController = FindObjectOfType<BattleStageController>();
         _creatureGenerator = FindObjectOfType<CreatureGenerator>();
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Start()
@@ -69,6 +73,7 @@ public class GameController : MonoBehaviour
         if (_battleCurrentPlayerCreatures <= 0)
         {
             StartCoroutine(EndBattle());
+            player.GetComponent<Movement>().anim.SetInteger("battleWon", 0);
         }
     }
     
@@ -78,6 +83,7 @@ public class GameController : MonoBehaviour
         if (_battleCurrentEnemyCreatures <= 0)
         {
             StartCoroutine(EndBattle());
+            player.GetComponent<Movement>().anim.SetInteger("battleWon", 1);
         }
     }
 
@@ -97,7 +103,10 @@ public class GameController : MonoBehaviour
         // collect Items
         yield return new WaitForSeconds(3); // TODO make this a variable value
 
-        
+        //take off player of the battle
+        player.GetComponent<Movement>().inBattle = false;
+        player.GetComponent<Movement>().anim.SetInteger("battleWon", -1);
+
         // camera transition black
         _cameraTransition.FipBlackout();
         yield return new WaitForSeconds(blackoutWaitTime);
