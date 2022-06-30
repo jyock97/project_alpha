@@ -29,7 +29,7 @@ public class CreatureGenerator : MonoBehaviour
             CreateEnemyCreature();
         }
 
-        return creaturesToSpawn;
+        return creaturesToSpawn + 1;
     }
 
     private void CreateEnemyCreature(GameObject prevCreature)
