@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class PlayerInventoryController : MonoBehaviour
 {
-    public List<ItemStats> _items;
+    public List<ItemStats> items;
 
     public void AddItem(ItemStats item)
     {
-        _items.Add(item);
+        items.Add(item);
     }
 
     private void SortItems()
     {
-        _items.Sort((item1, item2) =>
+        items.Sort((item1, item2) =>
         {
             float a = 1;
             if (item1.lifeMod > 0) a *= item1.lifeMod;

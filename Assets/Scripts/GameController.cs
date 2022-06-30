@@ -3,6 +3,14 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public enum GameState
+    {
+        UI,
+        GAMEPLAY
+    }
+
+    public GameState gameState;
+
     [SerializeField] private float blackoutWaitTime;
     
     private CreaturesManager _creaturesManager;
@@ -22,6 +30,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        gameState = GameState.GAMEPLAY;
         _battleStageController.InitializeBattleStage();
         _creaturesManager.InitPlayerCreatures();
     }
