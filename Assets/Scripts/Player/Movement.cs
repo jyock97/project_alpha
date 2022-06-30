@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour
 
     void playerMovementControler()
     {
-        rb.velocity = transform.TransformDirection(new Vector3(0, 0, speed * direction.z));
+        rb.velocity = transform.TransformDirection(new Vector3(0, rb.velocity.y, speed * direction.z));
     }
 
     void playerRotationControler()
