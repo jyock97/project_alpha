@@ -26,15 +26,6 @@ public class GameController : MonoBehaviour
         _creaturesManager.InitPlayerCreatures();
     }
 
-    private void Update()
-    {
-        //TODO this is just for testing, remove it later when creatures spawn itselfs
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartBattle(null);
-        }*/
-    }
-
     public void StartBattle(GameObject preCreature)
     {
         _creatureGenerator.previousCreature = preCreature;
@@ -105,5 +96,17 @@ public class GameController : MonoBehaviour
         // camera transition 
         _cameraTransition.FlipCameras();
         _cameraTransition.FipBlackout();
+
+        if (_creatureGenerator.previousCreature.GetComponent<CreatureController>().isBoss)
+        {
+            Destroy(_creatureGenerator.previousCreature);
+            //TODO: when the Boss dies, the game is finished.
+        }
+        else
+        {
+            GameObject previousSpawner = _creatureGenerator.previousCreature.GetComponent<CreatureIA>().parent;
+            if (previousSpawner.GetComponent<CreatureSpawner>())
+                previousSpawner.GetComponent<CreatureSpawner>().deleteCreature();
+        }
     }
 }
