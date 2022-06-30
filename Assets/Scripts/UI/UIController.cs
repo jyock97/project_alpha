@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
@@ -13,7 +11,7 @@ public class UIController : MonoBehaviour
     private GameController gameController;
     private PlayerInventoryController playerInventoryController;
     private Animator mainUIElementAnimator;
-    
+
 
     private void Awake()
     {
@@ -57,7 +55,7 @@ public class UIController : MonoBehaviour
             Destroy(creatureManagementContent.transform.GetChild(i).gameObject);
         }
 
-        foreach(ItemStats item in playerInventoryController.items)
+        foreach (ItemStats item in playerInventoryController.items)
         {
             GameObject go = Instantiate(creatureManagementContent.transform.GetChild(0).gameObject, creatureManagementContent.transform);
             go.SetActive(true);

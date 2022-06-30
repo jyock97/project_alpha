@@ -16,10 +16,10 @@ public struct ItemStats
 public class ItemController : MonoBehaviour
 {
     public float flightToPlayerTime;
-    
+
     public ItemForms items;
 
-    public string rarity; 
+    public string rarity;
 
     public ItemStats stats;
 
@@ -77,15 +77,15 @@ public class ItemController : MonoBehaviour
         stats.lifeMod = Random.Range(tmpVal2 / tMLm, tmpVal2 / tmLm);
 
         float tmpVal3 = tmpVal2 / stats.lifeMod;
-        stats.defenseMod = (int) Random.Range(tmpVal3 / tMDem, tmpVal3 / tmDem);
+        stats.defenseMod = (int)Random.Range(tmpVal3 / tMDem, tmpVal3 / tmDem);
         stats.evasionMod = MathF.Round(tmpVal3 / stats.defenseMod, 3);
-        stats.damageMod = (int) Random.Range(tmpVal1 / tMDam, tmpVal1 / tmDam);
+        stats.damageMod = (int)Random.Range(tmpVal1 / tMDam, tmpVal1 / tmDam);
         stats.attackSpeedMod = MathF.Round(tmpVal1 / stats.damageMod, 3);
     }
 
     private void SetRarity()
     {
-        List<float> l = new List<float> {stats.lifeMod, stats.defenseMod, stats.evasionMod, stats.damageMod, stats.attackSpeedMod};
+        List<float> l = new List<float> { stats.lifeMod, stats.defenseMod, stats.evasionMod, stats.damageMod, stats.attackSpeedMod };
 
         // calculate rarity
         int valuesToClear;
@@ -94,7 +94,8 @@ public class ItemController : MonoBehaviour
         {
             rarity = "Legendary";
             valuesToClear = 1;
-        } else if (randomValue < 0.25)
+        }
+        else if (randomValue < 0.25)
         {
             rarity = "Rare";
             valuesToClear = 2;
@@ -115,10 +116,10 @@ public class ItemController : MonoBehaviour
             }
 
             l[randomIndex] = 0;
-            
+
             valuesToClear--;
         }
-        
+
         // Recover values
         stats.lifeMod = l[0];
         stats.defenseMod = l[1];

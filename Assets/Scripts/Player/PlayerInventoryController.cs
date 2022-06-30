@@ -22,7 +22,7 @@ public class PlayerInventoryController : MonoBehaviour
             if (item1.damageMod > 0) b *= item1.damageMod;
             if (item1.attackSpeedMod > 0) b *= item1.attackSpeedMod;
             float item1TotalValue = a + b;
-            
+
             a = 1;
             if (item2.lifeMod > 0) a *= item2.lifeMod;
             if (item2.defenseMod > 0) a *= item2.defenseMod;
@@ -31,12 +31,12 @@ public class PlayerInventoryController : MonoBehaviour
             if (item2.damageMod > 0) b *= item2.damageMod;
             if (item2.attackSpeedMod > 0) b *= item2.attackSpeedMod;
             float item2TotalValue = a + b;
-            
+
             if (item1TotalValue < item2TotalValue)
                 return 1;
             if (item1TotalValue > item2TotalValue)
                 return -1;
-            
+
             return 0;
         });
     }

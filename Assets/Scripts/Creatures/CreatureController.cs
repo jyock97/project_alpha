@@ -14,11 +14,11 @@ public class CreatureController : MonoBehaviour
 
     public float damage;
     public float attackSpeed;
-    
+
     public string type;
-    
+
     public float creatureStrength;
-    
+
     public GameObject normalProjectilePrefab;
     public GameObject itemPrefab;
     public LayerMask targetLayerMask;
@@ -38,15 +38,15 @@ public class CreatureController : MonoBehaviour
     private bool _isDeath;
     private bool _isBehaving;
     private float _currentAttackTime;
-    
-     private void Awake()
+
+    private void Awake()
     {
         _gameController = FindObjectOfType<GameController>();
         _battleStageController = FindObjectOfType<BattleStageController>();
         _creaturesManager = FindObjectOfType<CreaturesManager>();
         _levelController = FindObjectOfType<LevelController>();
     }
-    
+
     private void Update()
     {
         if (_isBehaving && !_isDeath)
@@ -68,9 +68,9 @@ public class CreatureController : MonoBehaviour
         life = Random.Range(tmpVal2 / tMLm, tmpVal2 / tmLm);
 
         float tmpVal3 = tmpVal2 / life;
-        defense = (int) Random.Range(tmpVal3 / tMDem, tmpVal3 / tmDem);
+        defense = (int)Random.Range(tmpVal3 / tMDem, tmpVal3 / tmDem);
         evasion = MathF.Round(tmpVal3 / defense, 3);
-        damage = (int) Random.Range(tmpVal1 / tMDam, tmpVal1 / tmDam);
+        damage = (int)Random.Range(tmpVal1 / tMDam, tmpVal1 / tmDam);
         attackSpeed = MathF.Round(tmpVal1 / damage, 3);
 
         CalculateCreatureStrength();
@@ -79,11 +79,11 @@ public class CreatureController : MonoBehaviour
     public void CalculateCreatureStrength()
     {
         creatureStrength = (life * defense * evasion) + (damage * attackSpeed);
-        
+
         Debug.Log("Creature Strenght: " + creatureStrength);
     }
 
-    
+
     public void SetStats(PlayerCreature stats)
     {
         life = stats.life;
@@ -103,7 +103,7 @@ public class CreatureController : MonoBehaviour
     {
         _isBehaving = false;
     }
-    
+
     private void UpdateAttackTime()
     {
         _currentAttackTime = Time.time + 2 - attackSpeed / 100;
@@ -123,7 +123,7 @@ public class CreatureController : MonoBehaviour
                 currentCreature = creatureController;
             }
         }
-        
+
         GameObject go = Instantiate(normalProjectilePrefab);
         go.transform.position = transform.position;
         go.GetComponent<Projectile>().InitProjectile(currentCreature.transform.position, targetLayerMask, damage);
@@ -141,7 +141,7 @@ public class CreatureController : MonoBehaviour
     public void DealtDamage(float damageAmount)
     {
         life -= Mathf.Clamp(damageAmount - defense, 0, damageAmount);
-        
+
         if (life <= 0)
         {
             Die();
@@ -153,7 +153,7 @@ public class CreatureController : MonoBehaviour
         _isDeath = true;
         GameObject go = Instantiate(itemPrefab);
         go.transform.position = transform.position;
-        
+
         if (field == BattleStageController.BattleStageFields.PlayerField)
         {
             _gameController.PlayerCreatureDefeated();

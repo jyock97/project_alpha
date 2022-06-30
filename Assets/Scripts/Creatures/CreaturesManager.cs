@@ -12,7 +12,7 @@ public class CreaturesManager : MonoBehaviour
     }
 
     [SerializeField] private List<PlayerCreatureStt> playerCreaturesData;
-    
+
     [HideInInspector] public List<CreatureController> enemyCreatures = new List<CreatureController>();
     [HideInInspector] public List<CreatureController> playerCreatures = new List<CreatureController>();
 
@@ -31,7 +31,7 @@ public class CreaturesManager : MonoBehaviour
             creatureController.SetStats(playerCreaturesData[0].creatureStats);
             playerCreatures.Add(creatureController);
             _battleStageController.SetCreature(BattleStageController.BattleStageFields.PlayerField, creatureController);
-            
+
             creatureController = Instantiate(playerCreaturesData[1].prefab).GetComponent<CreatureController>();
             creatureController.SetStats(playerCreaturesData[1].creatureStats);
             playerCreatures.Add(creatureController);

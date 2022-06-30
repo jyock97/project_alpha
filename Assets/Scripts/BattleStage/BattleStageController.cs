@@ -21,7 +21,7 @@ public class BattleStageController : MonoBehaviour
     private GameObject _enemyField;
     private GameObject[] _enemyFieldPositions;
     private List<int> _enemyFieldFreePositions;
-    
+
     public void InitializeBattleStage()
     {
         _playerFieldPositions = new GameObject[FieldSize * FieldSize];

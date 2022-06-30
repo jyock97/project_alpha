@@ -1,10 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 [System.Serializable]
-class MatrixCollection {
+class MatrixCollection
+{
     [SerializeField]
     public List<Matrix4x4> Matrices = new List<Matrix4x4>();
 }
@@ -27,9 +27,10 @@ public class GrassCollection
 
     public GameObject prefab => m_Prefab;
 
-    public List<Matrix4x4> GetMatrices() {
+    public List<Matrix4x4> GetMatrices()
+    {
         List<Matrix4x4> matrices = new List<Matrix4x4>();
-        
+
         foreach (MatrixCollection matrixCollection in m_Matrices)
         {
             matrices.AddRange(matrixCollection.Matrices);
@@ -48,7 +49,8 @@ public class GrassCollection
         Initialize();
     }
 
-    void Initialize() {
+    void Initialize()
+    {
         m_GrassLODMeshes = m_Prefab.GetComponentsInChildren<MeshFilter>();
         m_LODs = m_Prefab.GetComponent<LODGroup>().GetLODs();
     }
@@ -73,14 +75,14 @@ public class GrassCollection
         m_Matrices[CurrentIndex].Matrices.Add(matrix);
     }
 
-    public void Draw(float distance,Camera camera)
+    public void Draw(float distance, Camera camera)
     {
         if (m_LODs == null)
         {
             Initialize();
         }
 
-        int LOD = CalculateLOD(distance,camera);
+        int LOD = CalculateLOD(distance, camera);
 
         if (LOD >= m_LODs.Length) //Culling
             return;
@@ -92,7 +94,7 @@ public class GrassCollection
     }
 
 
-    int CalculateLOD(float distance,Camera camera)
+    int CalculateLOD(float distance, Camera camera)
     {
         Vector3 rendererBoundsSize = m_LODs[0].renderers[0].bounds.size;
 
