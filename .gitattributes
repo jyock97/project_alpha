@@ -43,6 +43,7 @@
 *[Tt]errain.asset -unityyaml lfs
 # Note: Unity navmesh assets must have "NavMesh" suffix.
 *[Nn]av[Mm]esh.asset -unityyaml lfs
+*NavMesh.asset -unityyaml lfs
 
 # Image
 *.jpg lfs
