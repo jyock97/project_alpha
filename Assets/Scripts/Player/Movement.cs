@@ -38,14 +38,17 @@ public class Movement : MonoBehaviour
 
         direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        anim.SetFloat("speed", direction.magnitude);
+        if (!inBattle)
+        {
+            anim.SetFloat("speed", direction.magnitude);
 
-        if (direction.magnitude > 0.1f)
-            playerMovementControler();
+            if (direction.magnitude > 0.1f)
+                playerMovementControler();
 
-        playerRotationControler();
+            playerRotationControler();
 
-        stepClimb();
+            stepClimb();
+        }
     }
 
     void playerMovementControler()
