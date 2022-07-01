@@ -65,6 +65,7 @@ public class GameController : MonoBehaviour
         {
             StartCoroutine(EndBattle());
             player.GetComponent<Movement>().anim.SetInteger("battleWon", 0);
+            player.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetInteger("battleWon", 0);
         }
     }
     
@@ -75,6 +76,7 @@ public class GameController : MonoBehaviour
         {
             StartCoroutine(EndBattle());
             player.GetComponent<Movement>().anim.SetInteger("battleWon", 1);
+            player.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetInteger("battleWon", 1);
         }
     }
 
@@ -97,6 +99,7 @@ public class GameController : MonoBehaviour
         //take off player of the battle
         player.GetComponent<Movement>().inBattle = false;
         player.GetComponent<Movement>().anim.SetInteger("battleWon", -1);
+        player.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetInteger("battleWon", -1);
 
         // camera transition black
         _cameraTransition.FipBlackout();

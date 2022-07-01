@@ -14,10 +14,21 @@ public class Movement : MonoBehaviour
     Rigidbody rb;
     public Animator anim;
 
+    [SerializeField] GameObject stepRayUpper;
+    [SerializeField] GameObject stepRayLower;
+    [SerializeField] float stepHeight = 0.3f;
+    [SerializeField] float stepSmooth = 0.1f;
+
+    public GameObject fakePlayer;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+
+        stepRayUpper.transform.position = new Vector3(stepRayUpper.transform.position.x, stepHeight, stepRayUpper.transform.position.z);
+
+        fakePlayer = GameObject.FindGameObjectWithTag("FakePlayerPosition");
     }
 
     void Update()
@@ -34,10 +45,7 @@ public class Movement : MonoBehaviour
 
         playerRotationControler();
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            anim.Play("Victory");
-        }
+        stepClimb();
     }
 
     void playerMovementControler()
@@ -51,5 +59,20 @@ public class Movement : MonoBehaviour
             transform.Rotate(-Vector3.up * rotationSpeed * Time.deltaTime);
         else if (horizontal > 0)
             transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
+    }
+
+    void stepClimb()
+    {
+        RaycastHit hitLower;
+
+        if (Physics.Raycast(stepRayLower.transform.position, transform.TransformDirection(Vector3.forward), out hitLower, 0.1f))
+        {
+            RaycastHit hitUpper;
+
+            if (!Physics.Raycast(stepRayUpper.transform.position, transform.TransformDirection(Vector3.forward), out hitUpper, 0.2f))
+            {
+                rb.position -= new Vector3(0f, -stepSmooth, 0f);
+            }
+        }
     }
 }

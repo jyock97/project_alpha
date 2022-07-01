@@ -118,10 +118,10 @@ public class CreatureIA : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            
             {
                 navAgent.isStopped = true;
 
+                other.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetTrigger("surprised");
                 other.GetComponent<Movement>().anim.SetTrigger("surprised");
                 other.GetComponent<Movement>().inBattle = true;
 
