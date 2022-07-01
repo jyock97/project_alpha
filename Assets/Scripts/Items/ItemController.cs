@@ -77,7 +77,7 @@ public class ItemController : MonoBehaviour
     {
         float tmpVal1 = _levelController.currentItemStrength / splitValue;
         float tmpVal2 = tmpVal1 * (splitValue - 1);
-        stats.lifeMod = Random.Range(tmpVal2 / tMLm, tmpVal2 / tmLm);
+        stats.lifeMod = (int)Random.Range(tmpVal2 / tMLm, tmpVal2 / tmLm);
 
         float tmpVal3 = tmpVal2 / stats.lifeMod;
         stats.defenseMod = (int)Random.Range(tmpVal3 / tMDem, tmpVal3 / tmDem);

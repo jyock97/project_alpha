@@ -93,6 +93,7 @@ public class UIController : MonoBehaviour
 
         // Creature reset values
         CreatureController creatureController = creaturesManager.playerCreatures[currentSelectedCreature];
+        creatureController.statsModifiers = item;
         creatureController.life = creaturesManager.playerCreaturesData[currentSelectedCreature].creatureStats.life + item.lifeMod;
         creatureController.defense = creaturesManager.playerCreaturesData[currentSelectedCreature].creatureStats.defense + item.defenseMod;
         creatureController.evasion = creaturesManager.playerCreaturesData[currentSelectedCreature].creatureStats.evasion + item.evasionMod;
