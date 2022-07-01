@@ -5,14 +5,6 @@ using Random = UnityEngine.Random;
 
 public class CreatureController : MonoBehaviour
 {
-    public enum TypeField
-    {
-        Water,
-        Plant, 
-        Earth,
-        Fire
-    }
-
     public int currentPosition;
     public BattleStageController.BattleStageFields field;
 
@@ -23,8 +15,7 @@ public class CreatureController : MonoBehaviour
     public float damage;
     public float attackSpeed;
 
-    //public string type;
-    public TypeField type;
+    public string type;
 
     public float creatureStrength;
 
@@ -50,7 +41,7 @@ public class CreatureController : MonoBehaviour
     private bool _isBehaving;
     private float _currentAttackTime;
 
-    //string[] creaturesTypes = { "Water", "Plant", "Earth" };
+    string[] creaturesTypes = { "Water", "Plant", "Earth" };
 
     public bool isBoss;
 
@@ -60,8 +51,6 @@ public class CreatureController : MonoBehaviour
         _battleStageController = FindObjectOfType<BattleStageController>();
         _creaturesManager = FindObjectOfType<CreaturesManager>();
         _levelController = FindObjectOfType<LevelController>();
-
-        InsertStatisticsValues();
     }
 
     private void Update()
@@ -82,13 +71,14 @@ public class CreatureController : MonoBehaviour
 
         if (isBoss)
         {
-            type = TypeField.Fire;
+            type = "Fire";
 
             tmpVal1 = _levelController.globalBossStrength / splitValue;
         }
         else
         {
-            insertTypeByNum(Random.Range(0, 3));
+            int randomType = Random.Range(0, 2);
+            type = creaturesTypes[randomType];
 
             tmpVal1 = _levelController.globalCreatureStrength / splitValue;
         }
@@ -106,25 +96,11 @@ public class CreatureController : MonoBehaviour
         CalculateCreatureStrength();
     }
 
-    void insertTypeByNum(int i)
-    {
-        switch (i)
-        {
-            case 0:
-                type = TypeField.Water;
-                break;
-            case 1:
-                type = TypeField.Plant;
-                break;
-            case 2:
-                type = TypeField.Earth;
-                break;
-        }
-    }
-
     public void CalculateCreatureStrength()
     {
         creatureStrength = (life * defense * evasion) + (damage * attackSpeed);
+
+        Debug.Log("Creature Strenght: " + creatureStrength);
     }
 
 
@@ -206,11 +182,7 @@ public class CreatureController : MonoBehaviour
         {
             _gameController.EnemyCreatureDefeated();
             _creaturesManager.RemoveEnemyCreature(this);
-
-            if (!transform.parent)
-                Destroy(gameObject);
-            else
-                gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }

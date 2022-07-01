@@ -105,10 +105,13 @@ public class GameController : MonoBehaviour
         // collect Items
         yield return new WaitForSeconds(3); // TODO make this a variable value
 
+<<<<<<< HEAD
         //take off player of the battle
         player.GetComponent<Movement>().inBattle = false;
         player.GetComponent<Movement>().anim.SetInteger("battleWon", -1);
         player.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetInteger("battleWon", -1);
+=======
+>>>>>>> main
 
         // camera transition black
         _cameraTransition.FipBlackout();

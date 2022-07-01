@@ -5,14 +5,6 @@ using Random = UnityEngine.Random;
 
 public class CreatureController : MonoBehaviour
 {
-    public enum TypeField
-    {
-        Water,
-        Plant, 
-        Earth,
-        Fire
-    }
-
     public int currentPosition;
     public BattleStageController.BattleStageFields field;
 
@@ -22,14 +14,11 @@ public class CreatureController : MonoBehaviour
 
     public float damage;
     public float attackSpeed;
-
-    //public string type;
-    public TypeField type;
-
+    
+    public string type;
+    
     public float creatureStrength;
-
-    public ItemStats statsModifiers;
-
+    
     public GameObject normalProjectilePrefab;
     public GameObject itemPrefab;
     public LayerMask targetLayerMask;
@@ -50,20 +39,18 @@ public class CreatureController : MonoBehaviour
     private bool _isBehaving;
     private float _currentAttackTime;
 
-    //string[] creaturesTypes = { "Water", "Plant", "Earth" };
+    string[] creaturesTypes = { "Water", "Plant", "Earth" };
 
     public bool isBoss;
 
-    private void Awake()
+     private void Awake()
     {
         _gameController = FindObjectOfType<GameController>();
         _battleStageController = FindObjectOfType<BattleStageController>();
         _creaturesManager = FindObjectOfType<CreaturesManager>();
         _levelController = FindObjectOfType<LevelController>();
-
-        InsertStatisticsValues();
     }
-
+    
     private void Update()
     {
         if (_isBehaving && !_isDeath)
@@ -82,13 +69,14 @@ public class CreatureController : MonoBehaviour
 
         if (isBoss)
         {
-            type = TypeField.Fire;
+            type = "Fire";
 
             tmpVal1 = _levelController.globalBossStrength / splitValue;
         }
         else
         {
-            insertTypeByNum(Random.Range(0, 3));
+            int randomType = Random.Range(0, 2);
+            type = creaturesTypes[randomType];
 
             tmpVal1 = _levelController.globalCreatureStrength / splitValue;
         }
@@ -98,36 +86,22 @@ public class CreatureController : MonoBehaviour
         life = Random.Range(tmpVal2 / tMLm, tmpVal2 / tmLm);
 
         float tmpVal3 = tmpVal2 / life;
-        defense = (int)Random.Range(tmpVal3 / tMDem, tmpVal3 / tmDem);
+        defense = (int) Random.Range(tmpVal3 / tMDem, tmpVal3 / tmDem);
         evasion = MathF.Round(tmpVal3 / defense, 3);
-        damage = (int)Random.Range(tmpVal1 / tMDam, tmpVal1 / tmDam);
+        damage = (int) Random.Range(tmpVal1 / tMDam, tmpVal1 / tmDam);
         attackSpeed = MathF.Round(tmpVal1 / damage, 3);
 
         CalculateCreatureStrength();
     }
 
-    void insertTypeByNum(int i)
-    {
-        switch (i)
-        {
-            case 0:
-                type = TypeField.Water;
-                break;
-            case 1:
-                type = TypeField.Plant;
-                break;
-            case 2:
-                type = TypeField.Earth;
-                break;
-        }
-    }
-
     public void CalculateCreatureStrength()
     {
         creatureStrength = (life * defense * evasion) + (damage * attackSpeed);
+        
+        Debug.Log("Creature Strenght: " + creatureStrength);
     }
 
-
+    
     public void SetStats(PlayerCreature stats)
     {
         life = stats.life;
@@ -147,7 +121,7 @@ public class CreatureController : MonoBehaviour
     {
         _isBehaving = false;
     }
-
+    
     private void UpdateAttackTime()
     {
         _currentAttackTime = Time.time + 2 - attackSpeed / 100;
@@ -167,7 +141,7 @@ public class CreatureController : MonoBehaviour
                 currentCreature = creatureController;
             }
         }
-
+        
         GameObject go = Instantiate(normalProjectilePrefab);
         go.transform.position = transform.position;
         go.GetComponent<Projectile>().InitProjectile(currentCreature.transform.position, targetLayerMask, damage);
@@ -185,7 +159,7 @@ public class CreatureController : MonoBehaviour
     public void DealtDamage(float damageAmount)
     {
         life -= Mathf.Clamp(damageAmount - defense, 0, damageAmount);
-
+        
         if (life <= 0)
         {
             Die();
@@ -197,7 +171,7 @@ public class CreatureController : MonoBehaviour
         _isDeath = true;
         GameObject go = Instantiate(itemPrefab);
         go.transform.position = transform.position;
-
+        
         if (field == BattleStageController.BattleStageFields.PlayerField)
         {
             _gameController.PlayerCreatureDefeated();
@@ -206,11 +180,7 @@ public class CreatureController : MonoBehaviour
         {
             _gameController.EnemyCreatureDefeated();
             _creaturesManager.RemoveEnemyCreature(this);
-
-            if (!transform.parent)
-                Destroy(gameObject);
-            else
-                gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }

@@ -23,8 +23,12 @@ public class CreatureController : MonoBehaviour
     public float damage;
     public float attackSpeed;
 
+<<<<<<< HEAD
     //public string type;
     public TypeField type;
+=======
+    public string type;
+>>>>>>> main
 
     public float creatureStrength;
 
@@ -125,6 +129,11 @@ public class CreatureController : MonoBehaviour
     public void CalculateCreatureStrength()
     {
         creatureStrength = (life * defense * evasion) + (damage * attackSpeed);
+<<<<<<< HEAD
+=======
+
+        Debug.Log("Creature Strenght: " + creatureStrength);
+>>>>>>> main
     }
 
 

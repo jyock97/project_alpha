@@ -4,7 +4,7 @@ public class CameraTransition : MonoBehaviour
 {
     [SerializeField] GameObject worldCam;
     [SerializeField] GameObject battleCam;
-    
+
     [SerializeField] GameObject canvas;
 
     private void Start()

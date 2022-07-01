@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,11 +36,11 @@ public class GrassHexNode
 
         m_Grasses[prefab].AddMatrix(position, rotation, scale);
     }
-    public void Draw(Vector3 position, float distance,Camera camera, bool neverCull)
+    public void Draw(Vector3 position, float distance, Camera camera, bool neverCull)
     {
 
         if (!neverCull)
-            if (ShouldCull(position,camera))
+            if (ShouldCull(position, camera))
                 return;
 
         foreach (var grasscollection in m_Grasses.Values)
@@ -50,9 +49,9 @@ public class GrassHexNode
         }
     }
 
-    bool ShouldCull(Vector3 worldpos,Camera camera)
+    bool ShouldCull(Vector3 worldpos, Camera camera)
     {
-        if (IsCameraInBounds(worldpos,camera))
+        if (IsCameraInBounds(worldpos, camera))
             return false;
 
         float Height = m_Height;
@@ -75,7 +74,7 @@ public class GrassHexNode
                 IsInVision(pos5) || IsInVision(pos6) || IsInVision(pos7) || IsInVision(pos8));
     }
 
-    bool IsCameraInBounds(Vector3 worldpos,Camera camera)
+    bool IsCameraInBounds(Vector3 worldpos, Camera camera)
     {
         float xmin, xmax, ymin, ymax, zmin, zmax;
 
