@@ -109,7 +109,7 @@ public class CreatureIA : MonoBehaviour
 
         else
         {
-            isRamming = true;
+            isRamming = false;
             StartPatrolState();
         }
     }
@@ -118,6 +118,7 @@ public class CreatureIA : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            if (!other.GetComponent<Movement>().inBattle)
             {
                 navAgent.isStopped = true;
 
@@ -126,6 +127,12 @@ public class CreatureIA : MonoBehaviour
                 other.GetComponent<Movement>().inBattle = true;
 
                 StartCoroutine(WaitTimeToTransition());
+            }
+
+            else
+            {
+                isRamming = false;
+                StartPatrolState();
             }
         }
     }

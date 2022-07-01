@@ -38,8 +38,6 @@ public class CreatureSpawner : MonoBehaviour
     {
         GameObject go = Instantiate(creature, transform.position, transform.rotation);
         go.SetActive(true);
-        //CreatureController creatureController = go.GetComponent<CreatureController>();
-        //creatureController.InsertStatisticsValues();
         creatureList.Add(go);
         go.transform.SetParent(this.gameObject.transform);
     }

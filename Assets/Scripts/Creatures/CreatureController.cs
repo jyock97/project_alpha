@@ -123,8 +123,6 @@ public class CreatureController : MonoBehaviour
     public void CalculateCreatureStrength()
     {
         creatureStrength = (life * defense * evasion) + (damage * attackSpeed);
-        
-        Debug.Log("Creature Strenght: " + creatureStrength);
     }
 
     
@@ -206,7 +204,11 @@ public class CreatureController : MonoBehaviour
         {
             _gameController.EnemyCreatureDefeated();
             _creaturesManager.RemoveEnemyCreature(this);
-            Destroy(gameObject);
+
+            if (!transform.parent)
+                Destroy(gameObject);
+            else
+                gameObject.SetActive(false);
         }
     }
 }

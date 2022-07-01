@@ -34,16 +34,16 @@ public class CreatureGenerator : MonoBehaviour
 
     private void CreateEnemyCreature(GameObject prevCreature)
     {
-        GameObject go = Instantiate(prevCreature);
+        GameObject go = prevCreature;
         go.SetActive(true);
 
         CreatureIA creatureIA = go.GetComponent<CreatureIA>();
         creatureIA.enabled = false;
         go.GetComponent<NavMeshAgent>().enabled = false;
 
-        CreatureController creatureController = go.GetComponent<CreatureController>();
+        CreatureController creatureController = prevCreature.GetComponent<CreatureController>();
         creatureController.enabled = true;
-        //creatureController.InsertStatisticsValues();
+
         _bsController.SetCreature(BattleStageController.BattleStageFields.EnemyField, creatureController);
         _creaturesManager.enemyCreatures.Add(creatureController);
     }
@@ -59,7 +59,7 @@ public class CreatureGenerator : MonoBehaviour
 
         CreatureController creatureController = go.GetComponent<CreatureController>();
         creatureController.enabled = true;
-        //creatureController.InsertStatisticsValues();
+
         _bsController.SetCreature(BattleStageController.BattleStageFields.EnemyField, creatureController);
         _creaturesManager.enemyCreatures.Add(creatureController);
     }
