@@ -53,12 +53,15 @@ public class CreatureIA : MonoBehaviour
 
         if (hitColliders.Length > 0)
         {
-            if (!isRamming)
+            if (!hitColliders[0].gameObject.GetComponent<Movement>().inBattle)
             {
-                StopAllCoroutines();
-                isRamming = true;
-                rammingPoint = hitColliders[0].gameObject.transform.position;
-                StartCoroutine(SeekPlayer(rammingPoint));
+                if (!isRamming)
+                {
+                    StopAllCoroutines();
+                    isRamming = true;
+                    rammingPoint = hitColliders[0].gameObject.transform.position;
+                    StartCoroutine(SeekPlayer(rammingPoint));
+                }
             }
         }
 
@@ -105,7 +108,7 @@ public class CreatureIA : MonoBehaviour
 
         else
         {
-            isRamming = true;
+            isRamming = false;
             StartPatrolState();
         }
     }
@@ -114,13 +117,34 @@ public class CreatureIA : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            navAgent.isStopped = true;
+            if (!other.GetComponent<Movement>().inBattle)
+            {
+                navAgent.isStopped = true;
 
-            _gameController.StartBattle(this.gameObject);
+                other.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetTrigger("surprised");
+                other.GetComponent<Movement>().anim.SetTrigger("surprised");
+                other.GetComponent<Movement>().inBattle = true;
 
-            this.gameObject.SetActive(false);
+                StartCoroutine(WaitTimeToTransition());
+            }
+
+            else
+            {
+                isRamming = false;
+                StartPatrolState();
+            }
         }
     }
+
+    IEnumerator WaitTimeToTransition()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        _gameController.StartBattle(this.gameObject);
+
+        this.gameObject.SetActive(false);
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
