@@ -41,6 +41,10 @@ public class CreatureController : MonoBehaviour
     private bool _isBehaving;
     private float _currentAttackTime;
 
+    string[] creaturesTypes = { "Water", "Plant", "Earth" };
+
+    public bool isBoss;
+
     private void Awake()
     {
         _gameController = FindObjectOfType<GameController>();
@@ -63,9 +67,23 @@ public class CreatureController : MonoBehaviour
 
     public void InsertStatisticsValues()
     {
-        type = "Dummy";
+        float tmpVal1;
 
-        float tmpVal1 = _levelController.globalCreatureStrength / splitValue;
+        if (isBoss)
+        {
+            type = "Fire";
+
+            tmpVal1 = _levelController.globalBossStrength / splitValue;
+        }
+        else
+        {
+            int randomType = Random.Range(0, 2);
+            type = creaturesTypes[randomType];
+
+            tmpVal1 = _levelController.globalCreatureStrength / splitValue;
+        }
+        
+        
         float tmpVal2 = tmpVal1 * (splitValue - 1);
         life = Random.Range(tmpVal2 / tMLm, tmpVal2 / tmLm);
 

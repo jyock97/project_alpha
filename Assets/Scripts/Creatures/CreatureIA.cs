@@ -19,10 +19,15 @@ public class CreatureIA : MonoBehaviour
     Vector3 rammingPoint;
     NavMeshAgent navAgent;
 
+    public GameObject parent;
+
     private GameController _gameController;
 
     void Start()
     {
+        if(!this.GetComponent<CreatureController>().isBoss)
+            parent = transform.parent.gameObject;
+
         navAgent = GetComponent<NavMeshAgent>();
         _gameController = FindObjectOfType<GameController>();
 
@@ -37,6 +42,7 @@ public class CreatureIA : MonoBehaviour
     void StartPatrolState()
     {
         navAgent.isStopped = false;
+        navAgent.speed = baseVelocity;
         navAgent.SetDestination(GetRandomPointInNavmesh());
         StartCoroutine(SetNewTargetPos());
     }
