@@ -23,7 +23,7 @@ public class CreatureGenerator : MonoBehaviour
         CreateEnemyCreature(previousCreature);
 
         int creaturesToSpawn = Random.Range(1, 2);
-        
+
         for (int i = 0; i < creaturesToSpawn; i++)
         {
             CreateEnemyCreature();

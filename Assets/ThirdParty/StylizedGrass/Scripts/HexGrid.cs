@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -10,7 +8,7 @@ public class HexGrid
     public float InnerRadius;
     public Vector3[] Corners;
 
-    public HexGrid(float outerRadius,Vector3 gridPosition)
+    public HexGrid(float outerRadius, Vector3 gridPosition)
     {
         OffsetPosition = gridPosition;
         OuterRadius = outerRadius;
@@ -46,11 +44,11 @@ public class HexGrid
         var q = Mathf.FloorToInt((Mathf.Floor(2 * position.x + 1) + temp) / 3);
         var r = Mathf.FloorToInt((temp + Mathf.Floor(-position.x + Mathf.Sqrt(3) * position.z + 1)) / 3);
 
-        q -= Mathf.FloorToInt(r/2);
+        q -= Mathf.FloorToInt(r / 2);
         if (r % 2 != 0)
             q -= 1;
 
-        return new Vector2Int(q,r);
+        return new Vector2Int(q, r);
     }
 
     public void DrawHex(Vector3 position)

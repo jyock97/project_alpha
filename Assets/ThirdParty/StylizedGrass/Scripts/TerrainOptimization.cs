@@ -1,7 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
-using System.Linq;
 
 [ExecuteInEditMode]
 public class TerrainOptimization : MonoBehaviour
@@ -38,7 +38,7 @@ public class TerrainOptimization : MonoBehaviour
         TerrainData terrain = GetComponent<Terrain>().terrainData;
 
         m_TerrainOffset = transform.position;
-        m_HexGrid = new HexGrid(m_HexRadius,transform.position);
+        m_HexGrid = new HexGrid(m_HexRadius, transform.position);
         m_Width = Mathf.CeilToInt(terrain.size.x / (m_HexGrid.InnerRadius * 2f)) + 1;
         m_Height = Mathf.CeilToInt(terrain.size.z / (m_HexGrid.OuterRadius * 1.5f)) + 1;
 
@@ -69,7 +69,7 @@ public class TerrainOptimization : MonoBehaviour
 
         var newTreeInstances = terrain.treeInstances.Where(x => (!m_GrassToOptimize.Contains(terrain.treePrototypes[x.prototypeIndex].prefab))).ToArray();
 
-       for(int i=0;i<newTreeInstances.Length;i++)
+        for (int i = 0; i < newTreeInstances.Length; i++)
         {
             newTreeInstances[i].prototypeIndex = RemappedFoliage[terrain.treePrototypes[newTreeInstances[i].prototypeIndex].prefab];
         }
@@ -79,11 +79,12 @@ public class TerrainOptimization : MonoBehaviour
 
     }
 
-    public void UnInitialize() {
+    public void UnInitialize()
+    {
         TerrainData terrain = GetComponent<Terrain>().terrainData;
 
         List<TreeInstance> treeInstances = new List<TreeInstance>();
-        Dictionary<GameObject,int> treeGameObjects = new Dictionary<GameObject, int>();
+        Dictionary<GameObject, int> treeGameObjects = new Dictionary<GameObject, int>();
 
         foreach (var grassnode in m_GrassPatches)
         {
@@ -115,11 +116,11 @@ public class TerrainOptimization : MonoBehaviour
                     );
 
                     TreeInstance treeInstance = new TreeInstance();
-                    treeInstance.position = new Vector3(position.x / terrain.size.x,position.y / terrain.size.y, position.z / terrain.size.z);
+                    treeInstance.position = new Vector3(position.x / terrain.size.x, position.y / terrain.size.y, position.z / terrain.size.z);
                     treeInstance.rotation = rotation.eulerAngles.y;
                     treeInstance.heightScale = scale.y;
                     treeInstance.widthScale = scale.x;
-                    treeInstance.prototypeIndex = index+terrain.treePrototypes.Length;
+                    treeInstance.prototypeIndex = index + terrain.treePrototypes.Length;
 
                     treeInstances.Add(treeInstance);
                 }
@@ -143,7 +144,8 @@ public class TerrainOptimization : MonoBehaviour
         m_Height = 0;
     }
 
-    public bool IsInitialized() {
+    public bool IsInitialized()
+    {
         return (m_GrassPatches != null);
     }
 

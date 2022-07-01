@@ -22,7 +22,7 @@ public class CreatureSpawner : MonoBehaviour
 
     IEnumerator waitToGenerate()
     {
-        if(canGenerate)
+        if (canGenerate)
         {
             yield return new WaitForSeconds(timeToGenerate);
             generateCreature();
@@ -30,7 +30,7 @@ public class CreatureSpawner : MonoBehaviour
         }
         else
             yield return new WaitForSeconds(0);
-        
+
         StartCoroutine(waitToGenerate());
     }
 

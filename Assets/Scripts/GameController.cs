@@ -3,8 +3,16 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public enum GameState
+    {
+        UI,
+        GAMEPLAY
+    }
+
+    public GameState gameState;
+
     [SerializeField] private float blackoutWaitTime;
-    
+
     private CreaturesManager _creaturesManager;
     private CameraTransition _cameraTransition;
     private BattleStageController _battleStageController;
@@ -22,6 +30,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        gameState = GameState.GAMEPLAY;
         _battleStageController.InitializeBattleStage();
         _creaturesManager.InitPlayerCreatures();
     }
@@ -62,7 +71,7 @@ public class GameController : MonoBehaviour
             StartCoroutine(EndBattle());
         }
     }
-    
+
     public void EnemyCreatureDefeated()
     {
         _battleCurrentEnemyCreatures--;
@@ -84,11 +93,11 @@ public class GameController : MonoBehaviour
         {
             creatureController.EndBehaviour();
         }
-        
+
         // collect Items
         yield return new WaitForSeconds(3); // TODO make this a variable value
 
-        
+
         // camera transition black
         _cameraTransition.FipBlackout();
         yield return new WaitForSeconds(blackoutWaitTime);
