@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604cf36ca4de89c4d82149257208e94e, type: 3}
   m_Name: CubeCreature
   m_EditorClassIdentifier: 
-  life: 100
+  life: 120
   defense: 10
   evasion: 8
   damage: 15

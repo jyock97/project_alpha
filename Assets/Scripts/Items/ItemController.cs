@@ -12,7 +12,10 @@ public struct ItemStats
 
     public float damageMod;
     public float attackSpeedMod;
+
+    public int equipedCreature;
 }
+
 public class ItemController : MonoBehaviour
 {
     public float flightToPlayerTime;
@@ -81,6 +84,8 @@ public class ItemController : MonoBehaviour
         stats.evasionMod = MathF.Round(tmpVal3 / stats.defenseMod, 3);
         stats.damageMod = (int)Random.Range(tmpVal1 / tMDam, tmpVal1 / tmDam);
         stats.attackSpeedMod = MathF.Round(tmpVal1 / stats.damageMod, 3);
+
+        stats.equipedCreature = -1;
     }
 
     private void SetRarity()

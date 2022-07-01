@@ -5,13 +5,13 @@ using UnityEngine;
 public class CreaturesManager : MonoBehaviour
 {
     [Serializable]
-    struct PlayerCreatureStt
+    public struct PlayerCreatureStt
     {
         public GameObject prefab;
         public PlayerCreature creatureStats;
     }
 
-    [SerializeField] private List<PlayerCreatureStt> playerCreaturesData;
+    public List<PlayerCreatureStt> playerCreaturesData;
 
     [HideInInspector] public List<CreatureController> enemyCreatures = new List<CreatureController>();
     [HideInInspector] public List<CreatureController> playerCreatures = new List<CreatureController>();

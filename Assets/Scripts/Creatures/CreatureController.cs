@@ -19,6 +19,8 @@ public class CreatureController : MonoBehaviour
 
     public float creatureStrength;
 
+    public ItemStats statsModifiers;
+
     public GameObject normalProjectilePrefab;
     public GameObject itemPrefab;
     public LayerMask targetLayerMask;
