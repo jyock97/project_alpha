@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creature: {fileID: 2893452086148027721, guid: cae975b6937b1414d93febdb249e9af4, type: 3}
+  previousCreature: {fileID: 0}
