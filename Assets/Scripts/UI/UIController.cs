@@ -40,7 +40,6 @@ public class UIController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ToogleMainUIElement();
             if (gameController.gameState == GameController.GameState.GAMEPLAY)
             {
                 LoadItems();
@@ -51,6 +50,7 @@ public class UIController : MonoBehaviour
             {
                 gameController.gameState = GameController.GameState.GAMEPLAY;
             }
+            ToogleMainUIElement();
         }
     }
 
@@ -94,11 +94,7 @@ public class UIController : MonoBehaviour
         // Creature reset values
         CreatureController creatureController = creaturesManager.playerCreatures[currentSelectedCreature];
         creatureController.statsModifiers = item;
-        creatureController.life = creaturesManager.playerCreaturesData[currentSelectedCreature].creatureStats.life + item.lifeMod;
-        creatureController.defense = creaturesManager.playerCreaturesData[currentSelectedCreature].creatureStats.defense + item.defenseMod;
-        creatureController.evasion = creaturesManager.playerCreaturesData[currentSelectedCreature].creatureStats.evasion + item.evasionMod;
-        creatureController.damage = creaturesManager.playerCreaturesData[currentSelectedCreature].creatureStats.damage + item.damageMod;
-        creatureController.attackSpeed = creaturesManager.playerCreaturesData[currentSelectedCreature].creatureStats.attackSpeed + item.attackSpeedMod;
+        creatureController.SetStats(creaturesManager.playerCreaturesData[currentSelectedCreature].creatureStats);
 
         LoadItems();
         LoadCreatureStats();
