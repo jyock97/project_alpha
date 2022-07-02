@@ -37,6 +37,13 @@ public class CreaturesManager : MonoBehaviour
             playerCreatures.Add(creatureController);
             _battleStageController.SetCreature(BattleStageController.BattleStageFields.PlayerField, creatureController);
         }
+        else
+        {
+            playerCreatures[0].SetStats(playerCreaturesData[0].creatureStats);
+            playerCreatures[1].SetStats(playerCreaturesData[1].creatureStats);
+            _battleStageController.MoveCreatureToRandomPosition(BattleStageController.BattleStageFields.PlayerField, playerCreatures[0]);
+            _battleStageController.MoveCreatureToRandomPosition(BattleStageController.BattleStageFields.PlayerField, playerCreatures[1]);
+        }
     }
 
     public void RemoveEnemyCreature(CreatureController creatureController)

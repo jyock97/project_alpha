@@ -130,11 +130,11 @@ public class CreatureController : MonoBehaviour
 
     public void SetStats(PlayerCreature stats)
     {
-        life = stats.life;
-        defense = stats.defense;
-        evasion = stats.evasion;
-        damage = stats.damage;
-        attackSpeed = stats.attackSpeed;
+        life = stats.life + statsModifiers.lifeMod;
+        defense = stats.defense + statsModifiers.defenseMod;
+        evasion = stats.evasion + statsModifiers.evasionMod;
+        damage = stats.damage + statsModifiers.damageMod;
+        attackSpeed = stats.attackSpeed + statsModifiers.attackSpeedMod;
     }
 
     public void StartBehaviour()

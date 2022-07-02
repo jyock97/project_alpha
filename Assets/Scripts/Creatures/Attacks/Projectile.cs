@@ -34,7 +34,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (1 << other.gameObject.layer - 1 == _targetLayer.value)
+        if (1 << other.gameObject.layer == _targetLayer.value)
         {
             other.GetComponent<CreatureController>().DealtDamage(_damage);
         }
