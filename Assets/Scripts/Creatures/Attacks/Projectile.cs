@@ -2,25 +2,38 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] private float speed;
 
     private bool _isMoving;
-    private Vector3 _targetPosition;
     private LayerMask _targetLayer;
     private float _damage;
+
+
+    private Vector3 _targetPosition;
+    private AnimationCurve xCurve;
+    private AnimationCurve zCurve;
+    private AnimationCurve yCurve;
+
+    private float _distanceToTarget;
+    private float _timeToTarget;
+    private float _currentTime;
+    private bool _explode;
 
     private void Update()
     {
         if (_isMoving)
         {
-            Vector3 newPosition = transform.position;
-            newPosition = Vector3.MoveTowards(newPosition, _targetPosition, Time.deltaTime * speed);
-            transform.position = newPosition;
-
-            if (Vector3.Distance(transform.position, _targetPosition) < 0.01f)
+            if (_currentTime < _timeToTarget)
             {
+                _currentTime += Time.deltaTime;
+            }
+            else if (!_explode)
+            {
+                _currentTime = _timeToTarget;
                 Destroy(gameObject);
             }
+
+            transform.position = new Vector3(xCurve.Evaluate(_currentTime), yCurve.Evaluate(_currentTime), zCurve.Evaluate(_currentTime));
         }
     }
 
@@ -30,6 +43,19 @@ public class Projectile : MonoBehaviour
         _targetLayer = newTargetLayer;
         _damage = newDamage;
         _isMoving = true;
+
+        _distanceToTarget = Vector3.Distance(transform.position, _targetPosition);
+        _timeToTarget = _distanceToTarget / speed;
+
+        xCurve = AnimationCurve.Linear(0, transform.position.x, _timeToTarget, _targetPosition.x);
+        zCurve = AnimationCurve.Linear(0, transform.position.z, _timeToTarget, _targetPosition.z);
+        yCurve = AnimationCurve.Linear(0, 0, 0, 0);
+        yCurve.keys = new Keyframe[]
+        {
+            new Keyframe(0, transform.position.y, 0, Mathf.PI),
+            new Keyframe(_timeToTarget/2, transform.position.y + 1),
+            new Keyframe(_timeToTarget, _targetPosition.y, -2 * Mathf.PI, 0)
+        };
     }
 
     private void OnTriggerEnter(Collider other)
