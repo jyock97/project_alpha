@@ -199,13 +199,23 @@ public class CreatureController : MonoBehaviour
 
     private void Die()
     {
+        if (_isDeath)
+        {
+            return;
+        }
+
         _isDeath = true;
-        GameObject go = Instantiate(itemPrefab);
-        go.transform.position = transform.position;
+        if(itemPrefab != null)
+        {
+            GameObject go = Instantiate(itemPrefab);
+            go.transform.position = transform.position;
+        }
 
         if (field == BattleStageController.BattleStageFields.PlayerField)
         {
             _gameController.PlayerCreatureDefeated();
+            _creaturesManager.RemovePlayerCreature(this);
+            Destroy(gameObject);
         }
         else
         {

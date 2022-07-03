@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(blackoutWaitTime);
 
         // set player creatures
-        _creaturesManager.InitPlayerCreatures();
+        _battleCurrentPlayerCreatures = _creaturesManager.InitPlayerCreatures();
         // spawn enemies
         _battleCurrentEnemyCreatures = _creatureGenerator.GenerateCreatures();
         // camera transition 
@@ -116,6 +116,9 @@ public class GameController : MonoBehaviour
         // camera transition black
         _cameraTransition.FipBlackout();
         yield return new WaitForSeconds(blackoutWaitTime);
+
+        // clear remaining creatures;
+        _creaturesManager.ClearEnemies();
 
         // camera transition 
         _cameraTransition.FlipCameras();

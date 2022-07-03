@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604cf36ca4de89c4d82149257208e94e, type: 3}
   m_Name: SphereCreature
   m_EditorClassIdentifier: 
-  life: 100
-  defense: 10
-  evasion: 8
-  damage: 15
-  attackSpeed: 3
+  life: 20
+  defense: 1
+  evasion: 12
+  damage: 8
+  attackSpeed: 6
