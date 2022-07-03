@@ -18,6 +18,7 @@ public struct ItemStats
 
 public class ItemController : MonoBehaviour
 {
+    public float speed;
     public float flightToPlayerTime;
 
     public ItemForms items;
@@ -39,6 +40,15 @@ public class ItemController : MonoBehaviour
 
     private float _flightToPlayerTimeCurrent;
 
+    private Vector3 _targetPosition;
+    private AnimationCurve xCurve;
+    private AnimationCurve zCurve;
+    private AnimationCurve yCurve;
+
+    private float _distanceToTarget;
+    private float _timeToTarget;
+    private float _currentTime;
+
     private void Awake()
     {
         _player = GameObject.FindWithTag("FakePlayerPosition");
@@ -54,6 +64,7 @@ public class ItemController : MonoBehaviour
         Instantiate(itemForm, transform);
         CalculateValues();
         SetRarity();
+        CalculateCurves();
 
         _flightToPlayerTimeCurrent = Time.time + flightToPlayerTime;
     }
@@ -62,14 +73,37 @@ public class ItemController : MonoBehaviour
     {
         if (Time.time > _flightToPlayerTimeCurrent)
         {
-            transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, Time.deltaTime * 4);
-        }
+            if (_currentTime < _timeToTarget)
+            {
+                _currentTime += Time.deltaTime;
+            }
+            else
+            {
+                _currentTime = _timeToTarget;
+                _playerInventoryController.AddItem(stats);
+                Destroy(gameObject);
+            }
 
-        if (Vector3.Distance(transform.position, _player.transform.position) < 0.01)
-        {
-            _playerInventoryController.AddItem(stats);
-            Destroy(gameObject);
+            transform.position = new Vector3(xCurve.Evaluate(_currentTime), yCurve.Evaluate(_currentTime), zCurve.Evaluate(_currentTime));
         }
+    }
+
+    private void CalculateCurves()
+    {
+        _targetPosition = _player.transform.position;
+
+        _distanceToTarget = Vector3.Distance(transform.position, _targetPosition);
+        _timeToTarget = _distanceToTarget / speed;
+
+        xCurve = AnimationCurve.Linear(0, transform.position.x, _timeToTarget, _targetPosition.x);
+        zCurve = AnimationCurve.Linear(0, transform.position.z, _timeToTarget, _targetPosition.z);
+        yCurve = AnimationCurve.Linear(0, 0, 0, 0);
+        yCurve.keys = new Keyframe[]
+        {
+            new Keyframe(0, transform.position.y, 0, Mathf.PI),
+            new Keyframe(_timeToTarget/2, transform.position.y + 1.5f),
+            new Keyframe(_timeToTarget, _targetPosition.y, -2 * Mathf.PI, 0)
+        };
     }
 
 
