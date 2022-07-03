@@ -29,6 +29,7 @@ public class CreatureIA : MonoBehaviour
             parent = transform.parent.gameObject;
 
         navAgent = GetComponent<NavMeshAgent>();
+        navAgent.enabled = true;
         _gameController = FindObjectOfType<GameController>();
 
         StartPatrolState();
