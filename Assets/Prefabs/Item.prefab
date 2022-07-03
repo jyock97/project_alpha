@@ -44,9 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 492b111251bb63e4d8426433c75d08e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 12
+  flightToPlayerTime: 0.8
   items: {fileID: 11400000, guid: 60687793011b8a74eae2a68e6b5e07ad, type: 2}
-  lifeMod: 0
-  defenseMod: 0
-  evasionMod: 0
-  damageMod: 0
-  attackSpeedMod: 0
+  rarity: 
+  stats:
+    lifeMod: 0
+    defenseMod: 0
+    evasionMod: 0
+    damageMod: 0
+    attackSpeedMod: 0
+    equipedCreature: 0

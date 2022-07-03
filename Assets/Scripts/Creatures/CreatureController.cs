@@ -159,21 +159,24 @@ public class CreatureController : MonoBehaviour
     {
         List<CreatureController> creatureList = field == BattleStageController.BattleStageFields.PlayerField ? _creaturesManager.enemyCreatures : _creaturesManager.playerCreatures;
 
-        float currentDistance = float.MaxValue;
-        CreatureController currentCreature = creatureList[0];
-        foreach (CreatureController creatureController in creatureList)
+        if(creatureList.Count > 0)
         {
-            if (Vector3.Distance(transform.position, creatureController.transform.position) < currentDistance)
+            float currentDistance = float.MaxValue;
+            CreatureController currentCreature = creatureList[0];
+            foreach (CreatureController creatureController in creatureList)
             {
-                currentDistance = Vector3.Distance(transform.position, creatureController.transform.position);
-                currentCreature = creatureController;
+                if (Vector3.Distance(transform.position, creatureController.transform.position) < currentDistance)
+                {
+                    currentDistance = Vector3.Distance(transform.position, creatureController.transform.position);
+                    currentCreature = creatureController;
+                }
             }
-        }
 
-        GameObject go = Instantiate(normalProjectilePrefab);
-        go.transform.position = transform.position + Vector3.up;
-        go.GetComponent<Projectile>().InitProjectile(currentCreature.transform.position, targetLayerMask, damage);
-        currentCreature.SetTarget();
+            GameObject go = Instantiate(normalProjectilePrefab);
+            go.transform.position = transform.position + Vector3.up;
+            go.GetComponent<Projectile>().InitProjectile(currentCreature.transform.position, targetLayerMask, damage);
+            currentCreature.SetTarget();
+        }
     }
 
     public void SetTarget()
