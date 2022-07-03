@@ -119,13 +119,21 @@ MonoBehaviour:
   evasion: 0
   damage: 0
   attackSpeed: 0
-  type: 
+  type: 0
   creatureStrength: 0
+  statsModifiers:
+    lifeMod: 0
+    defenseMod: 0
+    evasionMod: 0
+    damageMod: 0
+    attackSpeedMod: 0
+    equipedCreature: 0
   normalProjectilePrefab: {fileID: 7069157025550678368, guid: 197bcb069a91f1544a316acd2f92f25e, type: 3}
   itemPrefab: {fileID: 2048575642930003193, guid: c4427774e33b6b24b87a1400d1e221da, type: 3}
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  isBoss: 0
 --- !u!114 &-4646122467027991528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +156,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   isRamming: 0
+  parent: {fileID: 0}
 --- !u!195 &7014080892288014511
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -155,7 +164,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2893452086148027721}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5

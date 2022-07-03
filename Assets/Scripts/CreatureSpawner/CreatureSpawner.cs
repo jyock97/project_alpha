@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CreatureSpawner : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class CreatureSpawner : MonoBehaviour
         go.SetActive(true);
         creatureList.Add(go);
         go.transform.SetParent(this.gameObject.transform);
+        go.GetComponent<NavMeshAgent>().enabled = true;
     }
 
     public void deleteCreature()

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalCreatureStrength: 500
+  globalBossStrength: 0
   currentItemStrength: 100
   minItemStrength: 100
   maxItemStrength: 300
