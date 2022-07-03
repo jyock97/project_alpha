@@ -46,6 +46,7 @@ public class CreatureController : MonoBehaviour
     private BattleStageController _battleStageController;
     private CreaturesManager _creaturesManager;
     private LevelController _levelController;
+    private Animator _animator;
     private bool _isDeath;
     private bool _isBehaving;
     private float _currentAttackTime;
@@ -60,6 +61,7 @@ public class CreatureController : MonoBehaviour
         _battleStageController = FindObjectOfType<BattleStageController>();
         _creaturesManager = FindObjectOfType<CreaturesManager>();
         _levelController = FindObjectOfType<LevelController>();
+        _animator = GetComponent<Animator>();
 
         InsertStatisticsValues();
     }
@@ -70,7 +72,7 @@ public class CreatureController : MonoBehaviour
         {
             if (Time.time > _currentAttackTime)
             {
-                Attack();
+                _animator.SetTrigger("Attack");
                 UpdateAttackTime();
             }
         }
@@ -153,7 +155,7 @@ public class CreatureController : MonoBehaviour
         _currentAttackTime = Time.time + 2 - attackSpeed / 100;
     }
 
-    private void Attack()
+    public void Attack()
     {
         List<CreatureController> creatureList = field == BattleStageController.BattleStageFields.PlayerField ? _creaturesManager.enemyCreatures : _creaturesManager.playerCreatures;
 
@@ -169,7 +171,7 @@ public class CreatureController : MonoBehaviour
         }
 
         GameObject go = Instantiate(normalProjectilePrefab);
-        go.transform.position = transform.position;
+        go.transform.position = transform.position + Vector3.up;
         go.GetComponent<Projectile>().InitProjectile(currentCreature.transform.position, targetLayerMask, damage);
         currentCreature.SetTarget();
     }

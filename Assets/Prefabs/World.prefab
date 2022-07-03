@@ -12,7 +12,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawners_08
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -46,7 +46,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawners_07
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -58,7 +58,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2211040709639755756}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -227.9, y: 7.05, z: -10.7}
+  m_LocalPosition: {x: -227.9, y: 5.95, z: -10.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -79,7 +79,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawners_09
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -91,7 +91,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2211040709771532647}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -59.7, y: 7.05, z: 198.3}
+  m_LocalPosition: {x: -59.7, y: 8.65, z: 198.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -191,7 +191,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawners_03
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -203,7 +203,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2211040710086809748}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -39.6, y: 7.05, z: -131.6}
+  m_LocalPosition: {x: -39.6, y: 3.78, z: -131.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -225,7 +225,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawners_05
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -237,7 +237,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2211040710306442651}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 110.8, y: 7.05, z: -14.6}
+  m_LocalPosition: {x: 110.8, y: 5.48, z: -14.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -259,7 +259,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawners_01
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -271,7 +271,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2211040710455607949}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -105.2, y: 7.05, z: -312}
+  m_LocalPosition: {x: -105.2, y: 3.61, z: -312}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -325,7 +325,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawners_04
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -337,7 +337,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2211040710770693217}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -50.5, y: 7.05, z: -14.6}
+  m_LocalPosition: {x: -50.5, y: 5.59, z: -14.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -436,7 +436,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawners_02
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -448,7 +448,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2211040710924732725}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -111.7, y: 7.05, z: -165.3}
+  m_LocalPosition: {x: -111.7, y: 4.03, z: -165.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -470,7 +470,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawners_06
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -482,7 +482,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2211040710935372267}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -312.8, y: 7.05, z: -1.1}
+  m_LocalPosition: {x: -258.27, y: 5.93, z: -19.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -551,7 +551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8999939
+      value: 9.3
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.y
@@ -559,7 +559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.299988
+      value: 3.19
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -589,6 +589,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner
@@ -617,7 +621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8999939
+      value: -6.44
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.y
@@ -625,7 +629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.299988
+      value: 9.07
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -655,6 +659,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner
@@ -683,7 +691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8999939
+      value: 18.5
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.y
@@ -691,7 +699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.299988
+      value: 11.8
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -721,6 +729,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner
@@ -749,15 +761,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -10.7
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.88
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -23.4
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -787,6 +799,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner_02
@@ -854,6 +870,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner_02
       objectReference: {fileID: 0}
@@ -881,7 +901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.600006
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.y
@@ -889,7 +909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.299988
+      value: 2.9
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -919,6 +939,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner_01
@@ -1129,7 +1153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.67
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1137,7 +1161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.77
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1167,6 +1191,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner_02
@@ -1234,6 +1262,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner_02
       objectReference: {fileID: 0}
@@ -1300,6 +1332,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner
       objectReference: {fileID: 0}
@@ -1365,6 +1401,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner_01
@@ -1560,6 +1600,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner_02
       objectReference: {fileID: 0}
@@ -1587,15 +1631,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8999939
+      value: 20.4
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.299988
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1625,6 +1669,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner
@@ -1820,6 +1868,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner_01
       objectReference: {fileID: 0}
@@ -1847,7 +1899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.4
+      value: 13.67
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1855,7 +1907,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.4
+      value: -25.99
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1885,6 +1937,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner_01
@@ -1952,6 +2008,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner
       objectReference: {fileID: 0}
@@ -1979,7 +2039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.600006
+      value: -14.8
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1987,7 +2047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.299988
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2017,6 +2077,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner_01
@@ -2084,6 +2148,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner
       objectReference: {fileID: 0}
@@ -2111,7 +2179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8999939
+      value: 4.98
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2119,7 +2187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.299988
+      value: 16.24
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2149,6 +2217,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner
@@ -2177,7 +2249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.600006
+      value: -22.53
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2185,7 +2257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.299988
+      value: 11.34
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2215,6 +2287,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner_01
@@ -2243,7 +2319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.600006
+      value: 15.6
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2251,7 +2327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.299988
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2281,6 +2357,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner_01
@@ -2348,6 +2428,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner_02
       objectReference: {fileID: 0}
@@ -2375,7 +2459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.600006
+      value: 10.21
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2383,7 +2467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.299988
+      value: -4.59
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2413,6 +2497,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner_01
@@ -2581,11 +2669,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.299988
+      value: 11.78
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2615,6 +2703,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner
@@ -2643,7 +2735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2651,7 +2743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -7.6
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2681,6 +2773,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner_02
@@ -2713,7 +2809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.77
       objectReference: {fileID: 0}
     - target: {fileID: 8792068853268210844, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2747,6 +2843,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8792068853268210846, guid: f584f59a3efd8fa428630e5d18b68f35, type: 3}
       propertyPath: m_Name
       value: CreatureSpawner_01

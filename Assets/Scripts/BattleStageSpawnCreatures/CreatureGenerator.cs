@@ -37,9 +37,9 @@ public class CreatureGenerator : MonoBehaviour
         GameObject go = prevCreature;
         go.SetActive(true);
 
-        CreatureIA creatureIA = go.GetComponent<CreatureIA>();
-        creatureIA.enabled = false;
+        go.GetComponent<CreatureIA>().enabled = false;
         go.GetComponent<NavMeshAgent>().enabled = false;
+        go.GetComponent<Animator>().enabled = true;
 
         CreatureController creatureController = prevCreature.GetComponent<CreatureController>();
         creatureController.enabled = true;
@@ -54,6 +54,7 @@ public class CreatureGenerator : MonoBehaviour
         go.SetActive(true);
 
         go.GetComponent<CreatureIA>().enabled = false;
+        go.GetComponent<Animator>().enabled = true;
 
         CreatureController creatureController = go.GetComponent<CreatureController>();
         creatureController.enabled = true;

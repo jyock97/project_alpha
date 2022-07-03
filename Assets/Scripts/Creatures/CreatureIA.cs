@@ -25,7 +25,7 @@ public class CreatureIA : MonoBehaviour
 
     void Start()
     {
-        if(!this.GetComponent<CreatureController>().isBoss)
+        if (!this.GetComponent<CreatureController>().isBoss)
             parent = transform.parent.gameObject;
 
         navAgent = GetComponent<NavMeshAgent>();
