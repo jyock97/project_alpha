@@ -46,7 +46,6 @@ public class CreatureSpawner : MonoBehaviour
 
     public void deleteCreature()
     {
-        Destroy(creatureList[0].gameObject);
         creatureList = new List<GameObject>();
     }
 }

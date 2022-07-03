@@ -23,27 +23,31 @@ public class CreaturesManager : MonoBehaviour
         _battleStageController = FindObjectOfType<BattleStageController>();
     }
 
-    public void InitPlayerCreatures()
+    public int InitPlayerCreatures()
     {
-        if (playerCreatures.Count == 0)
+        foreach (CreatureController creature in playerCreatures)
         {
-            CreatureController creatureController = Instantiate(playerCreaturesData[0].prefab).GetComponent<CreatureController>();
-            creatureController.SetStats(playerCreaturesData[0].creatureStats);
-            playerCreatures.Add(creatureController);
-            _battleStageController.SetCreature(BattleStageController.BattleStageFields.PlayerField, creatureController);
+            Destroy(creature.gameObject);
+        }
+        playerCreatures.Clear();
 
-            creatureController = Instantiate(playerCreaturesData[1].prefab).GetComponent<CreatureController>();
-            creatureController.SetStats(playerCreaturesData[1].creatureStats);
-            playerCreatures.Add(creatureController);
-            _battleStageController.SetCreature(BattleStageController.BattleStageFields.PlayerField, creatureController);
-        }
-        else
-        {
-            playerCreatures[0].SetStats(playerCreaturesData[0].creatureStats);
-            playerCreatures[1].SetStats(playerCreaturesData[1].creatureStats);
-            _battleStageController.MoveCreatureToRandomPosition(BattleStageController.BattleStageFields.PlayerField, playerCreatures[0]);
-            _battleStageController.MoveCreatureToRandomPosition(BattleStageController.BattleStageFields.PlayerField, playerCreatures[1]);
-        }
+        CreatureController creatureController = Instantiate(playerCreaturesData[0].prefab).GetComponent<CreatureController>();
+        creatureController.SetStats(playerCreaturesData[0].creatureStats);
+        playerCreatures.Add(creatureController);
+        _battleStageController.SetCreature(BattleStageController.BattleStageFields.PlayerField, creatureController);
+
+        creatureController = Instantiate(playerCreaturesData[1].prefab).GetComponent<CreatureController>();
+        creatureController.SetStats(playerCreaturesData[1].creatureStats);
+        playerCreatures.Add(creatureController);
+        _battleStageController.SetCreature(BattleStageController.BattleStageFields.PlayerField, creatureController);
+
+        // For the demo only 2 creatures will be used at all moment.
+        return 2;
+    }
+
+    public void RemovePlayerCreature(CreatureController creatureController)
+    {
+        playerCreatures.Remove(creatureController);
     }
 
     public void RemoveEnemyCreature(CreatureController creatureController)
