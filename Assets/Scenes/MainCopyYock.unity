@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 0.78371114, b: 0.7028302, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 133347283e115d147a5fcce7f47a538f, type: 2}
   m_HaloStrength: 0.5
@@ -1984,10 +1984,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2211040710800291622, guid: c1c2b26846b9d444d8fc73e77176b7d4, type: 3}
-      propertyPath: m_NavMeshLayer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2211040711198429924, guid: c1c2b26846b9d444d8fc73e77176b7d4, type: 3}
       propertyPath: m_Name
       value: World
@@ -2036,13 +2032,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7254320183293749371, guid: c1c2b26846b9d444d8fc73e77176b7d4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -194.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7254320183293749371, guid: c1c2b26846b9d444d8fc73e77176b7d4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 22.9
+    - target: {fileID: 3404235341755775105, guid: c1c2b26846b9d444d8fc73e77176b7d4, type: 3}
+      propertyPath: enableRefraction
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1c2b26846b9d444d8fc73e77176b7d4, type: 3}

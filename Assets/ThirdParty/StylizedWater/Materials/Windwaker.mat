@@ -53,11 +53,11 @@ Material:
     - WORLD_SPACE_UV: 1
     - _IntersectionFoamBlend: 1
     - _IntersectionFoamDepth: 0.72
-    - _IntersectionFoamScale: 0.19
+    - _IntersectionFoamScale: 0.3
     - _IntersectionWaterBlend: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RefractionStrength: 0.017
+    - _RefractionStrength: 0.01
     - _ShoreBlend: 0
     - _ShoreDepth: 0
     - _ShoreFade: 0
@@ -65,22 +65,22 @@ Material:
     - _WaterColorDepth: 2.59
     - _WaterColorHorizonDistance: 20
     m_Colors:
-    - _IntersectionFoamColor: {r: 1, g: 1, b: 1, a: 1}
+    - _IntersectionFoamColor: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
     - _IntersectionFoamMovement: {r: 0, g: 0, b: 0, a: 0}
-    - _IntersectionFoamSampling: {r: 1, g: 0, b: 0, a: 0}
-    - _NormalsMovement: {r: 0.04, g: 0.36, b: 0, a: 0}
+    - _IntersectionFoamSampling: {r: 0.9, g: 2, b: 0, a: 0}
+    - _NormalsMovement: {r: 0.12, g: 0.01, b: 0, a: 0}
     - _ShoreColor: {r: 0, g: 0.98039216, b: 0.30196074, a: 0}
-    - _SurfaceFoamColor1: {r: 1, g: 1, b: 1, a: 0.3215686}
-    - _SurfaceFoamColor2: {r: 1, g: 1, b: 1, a: 0.7294118}
-    - _SurfaceFoamMovement: {r: 1, g: 0, b: 0.47, a: 0}
-    - _SurfaceFoamSampling: {r: 0.561, g: 0.21, b: 0, a: 0}
-    - _SurfaceFoamTilingAndOffset: {r: 0.345, g: -1, b: 1.52, a: 0.74}
+    - _SurfaceFoamColor1: {r: 1, g: 1, b: 1, a: 0.23529412}
+    - _SurfaceFoamColor2: {r: 1, g: 1, b: 1, a: 0.23529412}
+    - _SurfaceFoamMovement: {r: 0.2, g: 0.1, b: 0.47, a: 0}
+    - _SurfaceFoamSampling: {r: 0.5, g: 0.6, b: 0, a: 0}
+    - _SurfaceFoamTilingAndOffset: {r: 0.5, g: -1, b: 2, a: 1.1}
     - _WaterColorDeep: {r: 0, g: 0.73006177, b: 1, a: 1}
     - _WaterColorHorizon: {r: 0, g: 0.22745094, b: 0.8, a: 1}
     - _WaterColorShallow: {r: 0, g: 0.83468914, b: 1, a: 1}
     - _WaveColor: {r: 0, g: 0, b: 0, a: 0}
     - _WaveDirections: {r: 0, g: 0.64, b: 1, a: 0.33}
-    - _WaveVisuals: {r: 0.055, g: 7.9, b: 1.38, a: 0}
+    - _WaveVisuals: {r: 0.055, g: 7.9, b: 1.44, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3884871068361501984
 MonoBehaviour:
