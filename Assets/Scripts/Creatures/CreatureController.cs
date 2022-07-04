@@ -23,7 +23,6 @@ public class CreatureController : MonoBehaviour
     public float damage;
     public float attackSpeed;
 
-    //public string type;
     public TypeField type;
 
     public float creatureStrength;
@@ -46,12 +45,14 @@ public class CreatureController : MonoBehaviour
     private BattleStageController _battleStageController;
     private CreaturesManager _creaturesManager;
     private LevelController _levelController;
+
     private Animator _animator;
+    [SerializeField] private Renderer _renderer;
     private bool _isDeath;
     private bool _isBehaving;
     private float _currentAttackTime;
 
-    //string[] creaturesTypes = { "Water", "Plant", "Earth" };
+    [SerializeField] Material[] creaturesTypeMaterial;
 
     public bool isBoss;
 
@@ -61,6 +62,7 @@ public class CreatureController : MonoBehaviour
         _battleStageController = FindObjectOfType<BattleStageController>();
         _creaturesManager = FindObjectOfType<CreaturesManager>();
         _levelController = FindObjectOfType<LevelController>();
+
         _animator = GetComponent<Animator>();
 
         InsertStatisticsValues();
@@ -85,6 +87,7 @@ public class CreatureController : MonoBehaviour
         if (isBoss)
         {
             type = TypeField.Fire;
+            _renderer.sharedMaterials[0] = creaturesTypeMaterial[3];
 
             tmpVal1 = _levelController.globalBossStrength / splitValue;
         }
@@ -114,12 +117,15 @@ public class CreatureController : MonoBehaviour
         {
             case 0:
                 type = TypeField.Water;
+                _renderer.material = creaturesTypeMaterial[i];
                 break;
             case 1:
                 type = TypeField.Plant;
+                _renderer.material = creaturesTypeMaterial[i];
                 break;
             case 2:
                 type = TypeField.Earth;
+                _renderer.material = creaturesTypeMaterial[i];
                 break;
         }
     }
