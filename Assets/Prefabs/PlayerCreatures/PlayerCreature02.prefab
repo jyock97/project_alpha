@@ -164,6 +164,12 @@ MonoBehaviour:
   targetLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  _renderer: {fileID: 1757950362554457491}
+  creaturesTypeMaterial:
+  - {fileID: 2100000, guid: 1a2230473a92ce1498f7576e0a2cadb3, type: 2}
+  - {fileID: 2100000, guid: 55fa0780be7e63249bcb48dbc36ee952, type: 2}
+  - {fileID: 2100000, guid: 67a8b5d0746e7a04f9d9a12f0a7f5ff5, type: 2}
+  - {fileID: 2100000, guid: 6b8e3ac7e5828a84a903bb248182d04d, type: 2}
   isBoss: 0
 --- !u!95 &4687504357261682969
 Animator:

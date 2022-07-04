@@ -21,6 +21,10 @@ public class Movement : MonoBehaviour
 
     public GameObject fakePlayer;
 
+    [SerializeField] GameObject groundRay;
+    [SerializeField] LayerMask groundLayer;
+    [SerializeField] float rayCastOffset = 0.5f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -66,16 +70,26 @@ public class Movement : MonoBehaviour
 
     void stepClimb()
     {
-        RaycastHit hitLower;
+        RaycastHit hitLower, hitUpper;
 
         if (Physics.Raycast(stepRayLower.transform.position, transform.TransformDirection(Vector3.forward), out hitLower, 0.1f))
         {
-            RaycastHit hitUpper;
-
             if (!Physics.Raycast(stepRayUpper.transform.position, transform.TransformDirection(Vector3.forward), out hitUpper, 0.2f))
             {
-                rb.position -= new Vector3(0f, -stepSmooth, 0f);
+                rb.position -= new Vector3(0, -stepSmooth, 0);
             }
         }
+
+        /*RaycastHit hit;
+        Vector3 targetPosition = transform.position;
+        Vector3 rayCastOrigin = new Vector3(transform.position.x, transform.position.y + rayCastOffset, transform.position.z);
+
+        if (Physics.SphereCast(rayCastOrigin, 0.2f, -Vector3.up, out hit, groundLayer))
+        {
+            Vector3 rayCastHitPoint = hit.point;
+            targetPosition.y = rayCastHitPoint.y;
+        }
+        
+        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime / 0.1f);*/
     }
 }
