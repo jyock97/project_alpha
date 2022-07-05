@@ -25,15 +25,18 @@ public class UIController : MonoBehaviour
         gameController = FindObjectOfType<GameController>();
         creaturesManager = FindObjectOfType<CreaturesManager>();
         playerInventoryController = FindObjectOfType<PlayerInventoryController>();
-        mainUIElementAnimator = mainUIElement.GetComponent<Animator>();
+        mainUIElementAnimator = (mainUIElement != null)? mainUIElement.GetComponent<Animator>() : null;
     }
 
     private void Start()
     {
-        LoadItems();
-        currentSelectedCreature = 0;
-        currentCreatureOneItemIndex = -1;
-        currentCreatureTwoItemIndex = -1;
+        if (creatureManagementContent)
+        {
+            LoadItems();
+            currentSelectedCreature = 0;
+            currentCreatureOneItemIndex = -1;
+            currentCreatureTwoItemIndex = -1;
+        }
     }
 
     private void Update()
