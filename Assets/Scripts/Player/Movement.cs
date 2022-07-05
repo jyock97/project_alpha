@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -16,21 +14,17 @@ public class Movement : MonoBehaviour
 
     [SerializeField] GameObject stepRayUpper;
     [SerializeField] GameObject stepRayLower;
-    [SerializeField] float stepHeight = 0.3f;
     [SerializeField] float stepSmooth = 0.1f;
 
     public GameObject fakePlayer;
 
-    [SerializeField] GameObject groundRay;
-    [SerializeField] LayerMask groundLayer;
-    [SerializeField] float rayCastOffset = 0.5f;
+    [SerializeField] GameObject groundBoxDetectionPosition;
+    [SerializeField] Vector3 groundBoxDetectionSize;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-
-        stepRayUpper.transform.position = new Vector3(stepRayUpper.transform.position.x, stepHeight, stepRayUpper.transform.position.z);
 
         fakePlayer = GameObject.FindGameObjectWithTag("FakePlayerPosition");
     }
@@ -46,12 +40,16 @@ public class Movement : MonoBehaviour
         {
             anim.SetFloat("speed", direction.magnitude);
 
-            if (direction.magnitude > 0.1f)
-                playerMovementControler();
+            playerMovementControler();
 
             playerRotationControler();
 
-            stepClimb();
+            if (direction.z > 0f)
+            {
+                stepClimb();
+            }
+
+            Fall();
         }
     }
 
@@ -71,25 +69,28 @@ public class Movement : MonoBehaviour
     void stepClimb()
     {
         RaycastHit hitLower, hitUpper;
-
-        if (Physics.Raycast(stepRayLower.transform.position, transform.TransformDirection(Vector3.forward), out hitLower, 0.1f))
+        Physics.Raycast(stepRayLower.transform.position, transform.forward, out hitLower, 0.3f, ~LayerMask.GetMask("Player"));
+        if (hitLower.collider != null)
         {
-            if (!Physics.Raycast(stepRayUpper.transform.position, transform.TransformDirection(Vector3.forward), out hitUpper, 0.2f))
+            Physics.Raycast(stepRayUpper.transform.position, transform.forward, out hitUpper, 0.3f, ~LayerMask.GetMask("Player"));
+            if (hitUpper.collider == null)
             {
-                rb.position -= new Vector3(0, -stepSmooth, 0);
+                rb.position += new Vector3(0, stepSmooth, 0);
             }
         }
+    }
 
-        /*RaycastHit hit;
-        Vector3 targetPosition = transform.position;
-        Vector3 rayCastOrigin = new Vector3(transform.position.x, transform.position.y + rayCastOffset, transform.position.z);
-
-        if (Physics.SphereCast(rayCastOrigin, 0.2f, -Vector3.up, out hit, groundLayer))
+    void Fall()
+    {
+        var hits = Physics.BoxCastAll(groundBoxDetectionPosition.transform.position, groundBoxDetectionSize, -transform.up, Quaternion.identity, 0.1f, ~LayerMask.GetMask("Player"));
+        if (hits.Length == 0)
         {
-            Vector3 rayCastHitPoint = hit.point;
-            targetPosition.y = rayCastHitPoint.y;
+            rb.position -= new Vector3(0, stepSmooth*2, 0);
         }
-        
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime / 0.1f);*/
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube(groundBoxDetectionPosition.transform.position, groundBoxDetectionSize*2);
     }
 }
