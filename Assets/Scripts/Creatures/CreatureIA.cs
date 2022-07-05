@@ -142,8 +142,8 @@ public class CreatureIA : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         _gameController.StartBattle(this.gameObject);
-
-        this.gameObject.SetActive(false);
+        StopAllCoroutines();
+        this.enabled = false;
     }
 
     private void OnDrawGizmos()

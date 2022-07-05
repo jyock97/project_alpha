@@ -225,7 +225,7 @@ public class CreatureController : MonoBehaviour
         }
         else
         {
-            _gameController.EnemyCreatureDefeated();
+            _gameController.EnemyCreatureDefeated(this);
             _creaturesManager.RemoveEnemyCreature(this);
 
             if (!transform.parent)

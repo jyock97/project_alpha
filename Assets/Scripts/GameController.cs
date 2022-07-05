@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class GameController : MonoBehaviour
     private int _battleCurrentEnemyCreatures;
 
     private GameObject player;
+    private bool isBossDefeated;
 
     private void Awake()
     {
@@ -47,6 +49,8 @@ public class GameController : MonoBehaviour
 
     private IEnumerator IE_StartBattle()
     {
+        isBossDefeated = false;
+
         // turn off player input
         // camera transition black
         _cameraTransition.FipBlackout();
@@ -81,15 +85,22 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void EnemyCreatureDefeated()
+    public void EnemyCreatureDefeated(CreatureController creature)
     {
         _battleCurrentEnemyCreatures--;
+
+        if (creature.isBoss)
+        {
+            isBossDefeated = true;
+        }
         if (_battleCurrentEnemyCreatures <= 0)
         {
             StartCoroutine(EndBattle());
             player.GetComponent<Movement>().anim.SetInteger("battleWon", 1);
             player.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetInteger("battleWon", 1);
         }
+
+
     }
 
 
@@ -117,23 +128,35 @@ public class GameController : MonoBehaviour
         _cameraTransition.FipBlackout();
         yield return new WaitForSeconds(blackoutWaitTime);
 
-        // clear remaining creatures;
-        _creaturesManager.ClearEnemies();
-
-        // camera transition 
-        _cameraTransition.FlipCameras();
-        _cameraTransition.FipBlackout();
-
-        if (_creatureGenerator.previousCreature.GetComponent<CreatureController>().isBoss)
+        if (isBossDefeated)
         {
-            Destroy(_creatureGenerator.previousCreature);
-            //TODO: when the Boss dies, the game is finished.
+            SceneManager.LoadScene("EndScene");
+            StopAllCoroutines();
         }
         else
         {
-            GameObject previousSpawner = _creatureGenerator.previousCreature.GetComponent<CreatureIA>().parent;
-            if (previousSpawner.GetComponent<CreatureSpawner>())
-                previousSpawner.GetComponent<CreatureSpawner>().deleteCreature();
+            // Reset boss
+
+
+            // clear remaining creatures;
+            _creaturesManager.ClearEnemies();
+            _creaturesManager.InitPlayerCreatures();
+
+            // camera transition 
+            _cameraTransition.FlipCameras();
+            _cameraTransition.FipBlackout();
+
+            if (_creatureGenerator.previousCreature.GetComponent<CreatureController>().isBoss)
+            {
+                //TODO: when the Boss dies, the game is finished.
+            }
+            else
+            {
+                GameObject previousSpawner = _creatureGenerator.previousCreature.GetComponent<CreatureIA>().parent;
+                if (previousSpawner.GetComponent<CreatureSpawner>())
+                    previousSpawner.GetComponent<CreatureSpawner>().deleteCreature();
+
+            }
         }
     }
 }

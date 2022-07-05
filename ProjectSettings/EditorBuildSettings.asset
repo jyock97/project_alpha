@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainCopyYock.unity
+    guid: 885119820664a56478c90c00008d1738
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: 183d30bcb434392458bfc94f93deb62f
   m_configObjects: {}
