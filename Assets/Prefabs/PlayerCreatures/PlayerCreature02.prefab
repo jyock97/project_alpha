@@ -170,6 +170,11 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 55fa0780be7e63249bcb48dbc36ee952, type: 2}
   - {fileID: 2100000, guid: 67a8b5d0746e7a04f9d9a12f0a7f5ff5, type: 2}
   - {fileID: 2100000, guid: 6b8e3ac7e5828a84a903bb248182d04d, type: 2}
+  creatureProjectile:
+  - {fileID: 7069157025550678368, guid: 69ceeae893b362941a1b2ac9905f7994, type: 3}
+  - {fileID: 7069157025550678368, guid: e263d830df35b9e48ba6c4532ce4f98a, type: 3}
+  - {fileID: 7069157025550678368, guid: e176b06a518305648956bb3783a2c0ef, type: 3}
+  - {fileID: 7069157025550678368, guid: 227c742d0bec222438efaf699beca43e, type: 3}
   isBoss: 0
 --- !u!95 &4687504357261682969
 Animator:
