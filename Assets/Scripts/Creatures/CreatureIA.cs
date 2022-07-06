@@ -103,8 +103,17 @@ public class CreatureIA : MonoBehaviour
 
         if (hitColliders.Length > 0)
         {
-            rammingPoint = hitColliders[0].gameObject.transform.position;
-            StartCoroutine(SeekPlayer(rammingPoint));
+            if (!hitColliders[0].gameObject.GetComponent<Movement>().inBattle)
+            {
+                rammingPoint = hitColliders[0].gameObject.transform.position;
+                StartCoroutine(SeekPlayer(rammingPoint));
+            }
+
+            else
+            {
+                isRamming = false;
+                StartPatrolState();
+            }
         }
 
         else
@@ -113,6 +122,30 @@ public class CreatureIA : MonoBehaviour
             StartPatrolState();
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (!collision.gameObject.GetComponent<Movement>().inBattle)
+            {
+                navAgent.isStopped = true;
+
+                collision.gameObject.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetTrigger("surprised");
+                collision.gameObject.GetComponent<Movement>().anim.SetTrigger("surprised");
+                collision.gameObject.GetComponent<Movement>().inBattle = true;
+
+                StartCoroutine(WaitTimeToTransition());
+            }
+
+            else
+            {
+                isRamming = false;
+                StartPatrolState();
+            }
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {

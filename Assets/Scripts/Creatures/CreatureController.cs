@@ -53,6 +53,7 @@ public class CreatureController : MonoBehaviour
     private float _currentAttackTime;
 
     [SerializeField] Material[] creaturesTypeMaterial;
+    [SerializeField] GameObject[] creatureProjectile;
 
     public bool isBoss;
 
@@ -89,6 +90,8 @@ public class CreatureController : MonoBehaviour
             type = TypeField.Fire;
             _renderer.sharedMaterials[0] = creaturesTypeMaterial[3];
 
+            normalProjectilePrefab = creatureProjectile[3];
+
             tmpVal1 = _levelController.globalBossStrength / splitValue;
         }
         else
@@ -118,14 +121,17 @@ public class CreatureController : MonoBehaviour
             case 0:
                 type = TypeField.Water;
                 _renderer.material = creaturesTypeMaterial[i];
+                normalProjectilePrefab = creatureProjectile[i];
                 break;
             case 1:
                 type = TypeField.Plant;
                 _renderer.material = creaturesTypeMaterial[i];
+                normalProjectilePrefab = creatureProjectile[i];
                 break;
             case 2:
                 type = TypeField.Earth;
                 _renderer.material = creaturesTypeMaterial[i];
+                normalProjectilePrefab = creatureProjectile[i];
                 break;
         }
     }

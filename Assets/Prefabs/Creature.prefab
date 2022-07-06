@@ -228,7 +228,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2893452086148027721}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -261,7 +261,7 @@ MonoBehaviour:
     damageMod: 0
     attackSpeedMod: 0
     equipedCreature: 0
-  normalProjectilePrefab: {fileID: 7069157025550678368, guid: 197bcb069a91f1544a316acd2f92f25e, type: 3}
+  normalProjectilePrefab: {fileID: 7069157025550678368, guid: e176b06a518305648956bb3783a2c0ef, type: 3}
   itemPrefab: {fileID: 2048575642930003193, guid: c4427774e33b6b24b87a1400d1e221da, type: 3}
   targetLayerMask:
     serializedVersion: 2
@@ -272,6 +272,11 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 55fa0780be7e63249bcb48dbc36ee952, type: 2}
   - {fileID: 2100000, guid: 67a8b5d0746e7a04f9d9a12f0a7f5ff5, type: 2}
   - {fileID: 2100000, guid: 6b8e3ac7e5828a84a903bb248182d04d, type: 2}
+  creatureProjectile:
+  - {fileID: 7069157025550678368, guid: 69ceeae893b362941a1b2ac9905f7994, type: 3}
+  - {fileID: 7069157025550678368, guid: e263d830df35b9e48ba6c4532ce4f98a, type: 3}
+  - {fileID: 7069157025550678368, guid: e176b06a518305648956bb3783a2c0ef, type: 3}
+  - {fileID: 7069157025550678368, guid: 227c742d0bec222438efaf699beca43e, type: 3}
   isBoss: 0
 --- !u!114 &-4646122467027991528
 MonoBehaviour:
