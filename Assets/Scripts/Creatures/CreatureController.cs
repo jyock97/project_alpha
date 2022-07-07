@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -55,6 +56,11 @@ public class CreatureController : MonoBehaviour
 
     public bool isBoss;
 
+    public AudioSource _source;
+    [SerializeField] AudioClip attackSound;
+    [SerializeField] AudioClip defeatSound;
+    [SerializeField] public AudioClip hurtSound;
+
     private void Awake()
     {
         _gameController = FindObjectOfType<GameController>();
@@ -63,6 +69,7 @@ public class CreatureController : MonoBehaviour
         _levelController = FindObjectOfType<LevelController>();
 
         _animator = GetComponent<Animator>();
+        _source = GetComponent<AudioSource>();
 
         InsertStatisticsValues();
     }
@@ -186,6 +193,11 @@ public class CreatureController : MonoBehaviour
             go.transform.position = transform.position + Vector3.up;
             go.GetComponent<Projectile>().InitProjectile(currentCreature.transform.position, targetLayerMask, damage);
             currentCreature.SetTarget();
+
+            _source.spatialBlend = 0;
+            _source.loop = false;
+            _source.clip = attackSound;
+            _source.Play();
         }
     }
 
@@ -203,6 +215,11 @@ public class CreatureController : MonoBehaviour
 
         if (life <= 0)
         {
+            _source.spatialBlend = 0;
+            _source.loop = false;
+            _source.clip = defeatSound;
+            _source.Play();
+
             Die();
         }
     }
@@ -225,7 +242,8 @@ public class CreatureController : MonoBehaviour
         {
             _gameController.PlayerCreatureDefeated();
             _creaturesManager.RemovePlayerCreature(this);
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            StartCoroutine(DestroyGameObject());
         }
         else
         {
@@ -233,9 +251,41 @@ public class CreatureController : MonoBehaviour
             _creaturesManager.RemoveEnemyCreature(this);
 
             if (!transform.parent)
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                StartCoroutine(DestroyGameObject());
+
             else
-                gameObject.SetActive(false);
+            {
+                StartCoroutine(DesapearGameObject());
+            }
         }
+    }
+
+    IEnumerator DestroyGameObject()
+    {
+        _renderer.enabled = false;
+
+        _source.spatialBlend = 0;
+        _source.loop = false;
+        _source.clip = defeatSound;
+        _source.Play();
+
+        yield return new WaitForSeconds(3);
+
+        Destroy(gameObject);
+    }
+
+    IEnumerator DesapearGameObject()
+    {
+        _renderer.enabled = false;
+
+        _source.spatialBlend = 0;
+        _source.loop = false;
+        _source.clip = defeatSound;
+        _source.Play();
+
+        yield return new WaitForSeconds(3);
+
+        gameObject.SetActive(false);
     }
 }

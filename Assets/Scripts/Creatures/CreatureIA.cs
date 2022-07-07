@@ -23,6 +23,11 @@ public class CreatureIA : MonoBehaviour
 
     private GameController _gameController;
 
+    AudioSource source;
+
+    GameObject world;
+    AudioClip battleMusic;
+
     void Start()
     {
         if (!this.GetComponent<CreatureController>().isBoss)
@@ -31,6 +36,11 @@ public class CreatureIA : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
         navAgent.enabled = true;
         _gameController = FindObjectOfType<GameController>();
+
+        world = GameObject.Find("World");
+        battleMusic = world.GetComponent<MusicController>().battle;
+
+        source = GetComponent<AudioSource>();
 
         StartPatrolState();
     }
@@ -74,6 +84,7 @@ public class CreatureIA : MonoBehaviour
 
     IEnumerator SetNewTargetPos()
     {
+        source.Play();
         yield return new WaitUntil(() => navAgent.remainingDistance <= stoppingDistance);
 
         navAgent.SetDestination(GetRandomPointInNavmesh());
@@ -98,7 +109,9 @@ public class CreatureIA : MonoBehaviour
 
         yield return new WaitUntil(() => navAgent.remainingDistance <= stoppingDistance);
         navAgent.isStopped = true;
+        source.Pause();
         yield return new WaitForSeconds(waitTime);
+        source.Play();
         navAgent.isStopped = false;
 
         if (hitColliders.Length > 0)
@@ -130,34 +143,14 @@ public class CreatureIA : MonoBehaviour
             if (!collision.gameObject.GetComponent<Movement>().inBattle)
             {
                 navAgent.isStopped = true;
-
+                source.Pause();
                 collision.gameObject.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetTrigger("surprised");
                 collision.gameObject.GetComponent<Movement>().anim.SetTrigger("surprised");
                 collision.gameObject.GetComponent<Movement>().inBattle = true;
 
-                StartCoroutine(WaitTimeToTransition());
-            }
-
-            else
-            {
-                isRamming = false;
-                StartPatrolState();
-            }
-        }
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            if (!other.GetComponent<Movement>().inBattle)
-            {
-                navAgent.isStopped = true;
-
-                other.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetTrigger("surprised");
-                other.GetComponent<Movement>().anim.SetTrigger("surprised");
-                other.GetComponent<Movement>().inBattle = true;
+                world.GetComponent<AudioSource>().Stop();
+                world.GetComponent<AudioSource>().clip = battleMusic;
+                world.GetComponent<AudioSource>().Play();
 
                 StartCoroutine(WaitTimeToTransition());
             }
@@ -169,7 +162,6 @@ public class CreatureIA : MonoBehaviour
             }
         }
     }
-
     IEnumerator WaitTimeToTransition()
     {
         yield return new WaitForSeconds(1.0f);

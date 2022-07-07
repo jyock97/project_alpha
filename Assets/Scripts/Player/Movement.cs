@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
 
     Rigidbody rb;
     public Animator anim;
+    AudioSource source;
 
     [SerializeField] GameObject stepRayUpper;
     [SerializeField] GameObject stepRayLower;
@@ -21,10 +22,13 @@ public class Movement : MonoBehaviour
     [SerializeField] GameObject groundBoxDetectionPosition;
     [SerializeField] Vector3 groundBoxDetectionSize;
 
+    [SerializeField] AudioClip step1, step2;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
 
         fakePlayer = GameObject.FindGameObjectWithTag("FakePlayerPosition");
     }
@@ -87,6 +91,16 @@ public class Movement : MonoBehaviour
         {
             rb.position -= new Vector3(0, stepSmooth*2, 0);
         }
+    }
+
+    public void PlayStep1()
+    {
+        source.PlayOneShot(step1);
+    }
+
+    public void PlayStep2()
+    {
+        source.PlayOneShot(step2);
     }
 
     private void OnDrawGizmos()
