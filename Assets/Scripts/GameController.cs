@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
@@ -13,11 +14,13 @@ public class GameController : MonoBehaviour
     public GameState gameState;
 
     [SerializeField] private float blackoutWaitTime;
+    [SerializeField] private GameObject bossPrefab;
 
     private CreaturesManager _creaturesManager;
     private CameraTransition _cameraTransition;
     private BattleStageController _battleStageController;
     private CreatureGenerator _creatureGenerator;
+    private LevelController _levelController;
     private int _battleCurrentPlayerCreatures;
     private int _battleCurrentEnemyCreatures;
 
@@ -30,6 +33,7 @@ public class GameController : MonoBehaviour
         _cameraTransition = FindObjectOfType<CameraTransition>();
         _battleStageController = FindObjectOfType<BattleStageController>();
         _creatureGenerator = FindObjectOfType<CreatureGenerator>();
+        _levelController = FindObjectOfType<LevelController>();
 
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -56,6 +60,8 @@ public class GameController : MonoBehaviour
         _cameraTransition.FipBlackout();
         yield return new WaitForSeconds(blackoutWaitTime);
 
+        // reset BattleStage free spaces
+        _battleStageController.ResetFreeSpace();
         // set player creatures
         _battleCurrentPlayerCreatures = _creaturesManager.InitPlayerCreatures();
         // spawn enemies
@@ -88,6 +94,8 @@ public class GameController : MonoBehaviour
     public void EnemyCreatureDefeated(CreatureController creature)
     {
         _battleCurrentEnemyCreatures--;
+        _levelController.UpdateItemStrength();
+
 
         if (creature.isBoss)
         {
@@ -135,9 +143,6 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            // Reset boss
-
-
             // clear remaining creatures;
             _creaturesManager.ClearEnemies();
             _creaturesManager.InitPlayerCreatures();
@@ -146,17 +151,24 @@ public class GameController : MonoBehaviour
             _cameraTransition.FlipCameras();
             _cameraTransition.FipBlackout();
 
-            if (_creatureGenerator.previousCreature.GetComponent<CreatureController>().isBoss)
-            {
-                //TODO: when the Boss dies, the game is finished.
-            }
-            else
+            // Reset boss
+            StartCoroutine(ReSpawnBoss());
+
+            if (!_creatureGenerator.previousCreature.GetComponent<CreatureController>().isBoss)
             {
                 GameObject previousSpawner = _creatureGenerator.previousCreature.GetComponent<CreatureIA>().parent;
                 if (previousSpawner.GetComponent<CreatureSpawner>())
                     previousSpawner.GetComponent<CreatureSpawner>().deleteCreature();
-
             }
         }
+    }
+
+    private IEnumerator ReSpawnBoss()
+    {
+        yield return new WaitForSeconds(3);
+        GameObject go = Instantiate(bossPrefab);
+        go.transform.position = new Vector3(-80, 8, 364);
+        go.GetComponent<CreatureIA>().enabled = true;
+        go.GetComponent<NavMeshAgent>().enabled = true;
     }
 }

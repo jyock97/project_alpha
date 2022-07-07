@@ -1,6 +1,6 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -25,7 +25,7 @@ public class UIController : MonoBehaviour
         gameController = FindObjectOfType<GameController>();
         creaturesManager = FindObjectOfType<CreaturesManager>();
         playerInventoryController = FindObjectOfType<PlayerInventoryController>();
-        mainUIElementAnimator = (mainUIElement != null)? mainUIElement.GetComponent<Animator>() : null;
+        mainUIElementAnimator = (mainUIElement != null) ? mainUIElement.GetComponent<Animator>() : null;
     }
 
     private void Start()
@@ -67,6 +67,11 @@ public class UIController : MonoBehaviour
         mainUIElementAnimator.SetTrigger("flipUI");
     }
 
+    public void LoadEndScene()
+    {
+        SceneManager.LoadScene("EndScene");
+    }
+
 
     #region Creature Management
     public void SelectCreature(int creatureIndex)
@@ -81,7 +86,7 @@ public class UIController : MonoBehaviour
 
         // PlayerInventory flip equiped items
         int prevItemIndex = currentSelectedCreature == 0 ? currentCreatureOneItemIndex : currentCreatureTwoItemIndex;
-        
+
         ItemStats item;
         if (prevItemIndex > -1)
         {
@@ -96,8 +101,16 @@ public class UIController : MonoBehaviour
 
         // Creature reset values
         CreatureController creatureController = creaturesManager.playerCreatures[currentSelectedCreature];
-        creatureController.statsModifiers = item;
-        creatureController.SetStats(creaturesManager.playerCreaturesData[currentSelectedCreature].creatureStats);
+        if (currentSelectedCreature == 0)
+        {
+            playerInventoryController.playerCreature1Item = item;
+        }
+        else
+        {
+            playerInventoryController.playerCreature2Item = item;
+
+        }
+        creatureController.SetStats(creaturesManager.playerCreaturesData[currentSelectedCreature].creatureStats, item);
 
         LoadItems();
         LoadCreatureStats();
@@ -118,11 +131,11 @@ public class UIController : MonoBehaviour
             go.SetActive(true);
             go.name = index.ToString();
 
-            if(item.equipedCreature == 0)
+            if (item.equipedCreature == 0)
             {
                 currentCreatureOneItemIndex = index;
             }
-            if(item.equipedCreature == 1)
+            if (item.equipedCreature == 1)
             {
                 currentCreatureTwoItemIndex = index;
             }
@@ -132,7 +145,7 @@ public class UIController : MonoBehaviour
             go.transform.GetChild(2).GetComponent<TMP_Text>().SetText($"Evasion: +{item.evasionMod}");
             go.transform.GetChild(3).GetComponent<TMP_Text>().SetText($"Damage: +{item.damageMod}");
             go.transform.GetChild(4).GetComponent<TMP_Text>().SetText($"Attack Speed: +{item.attackSpeedMod}");
-            
+
             index++;
         }
     }
@@ -140,26 +153,28 @@ public class UIController : MonoBehaviour
     private void LoadCreatureStats()
     {
         CreatureController creatureController = creaturesManager.playerCreatures[currentSelectedCreature];
+        ItemStats itemStats = currentSelectedCreature == 0 ?
+            playerInventoryController.playerCreature1Item : playerInventoryController.playerCreature1Item;
 
         SetUICreatureStat(0, creatureController.life.ToString(),
             creaturesManager.playerCreaturesData[currentSelectedCreature].creatureStats.life.ToString(),
-            creatureController.statsModifiers.lifeMod.ToString());
+            itemStats.lifeMod.ToString());
 
         SetUICreatureStat(1, creatureController.defense.ToString(),
             creaturesManager.playerCreaturesData[currentSelectedCreature].creatureStats.defense.ToString(),
-            creatureController.statsModifiers.defenseMod.ToString());
+            itemStats.defenseMod.ToString());
 
         SetUICreatureStat(2, creatureController.evasion.ToString(),
             creaturesManager.playerCreaturesData[currentSelectedCreature].creatureStats.evasion.ToString(),
-            creatureController.statsModifiers.evasionMod.ToString());
+            itemStats.evasionMod.ToString());
 
         SetUICreatureStat(3, creatureController.damage.ToString(),
             creaturesManager.playerCreaturesData[currentSelectedCreature].creatureStats.damage.ToString(),
-            creatureController.statsModifiers.damageMod.ToString());
+            itemStats.damageMod.ToString());
 
         SetUICreatureStat(4, creatureController.attackSpeed.ToString(),
             creaturesManager.playerCreaturesData[currentSelectedCreature].creatureStats.attackSpeed.ToString(),
-            creatureController.statsModifiers.attackSpeedMod.ToString());
+            itemStats.attackSpeedMod.ToString());
 
     }
     private void SetUICreatureStat(int index, string totalVal, string defaultVal, string modValue)
