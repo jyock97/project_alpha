@@ -61,7 +61,12 @@ public class Projectile : MonoBehaviour
     {
         if (1 << other.gameObject.layer == _targetLayer.value)
         {
-            other.GetComponent<CreatureController>().DealtDamage(_damage);
+            if (other.gameObject.activeSelf)
+            {
+                other.GetComponent<CreatureController>().DealtDamage(_damage);
+                AudioClip hurt = other.GetComponent<CreatureController>().hurtSound;
+                other.GetComponent<CreatureController>()._source.PlayOneShot(hurt);
+            }
         }
     }
 }

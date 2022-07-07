@@ -81,6 +81,7 @@ public class ItemController : MonoBehaviour
             {
                 _currentTime = _timeToTarget;
                 _playerInventoryController.AddItem(stats);
+                _player.GetComponent<AudioSource>().Play();
                 Destroy(gameObject);
             }
 

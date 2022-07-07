@@ -27,8 +27,18 @@ public class GameController : MonoBehaviour
     private GameObject player;
     private bool isBossDefeated;
 
+    public GameObject world;
+    AudioClip victoryMusic;
+    AudioClip defeatMusic;
+    AudioClip levelMusic;
+
     private void Awake()
     {
+        world = GameObject.Find("World");
+        victoryMusic = world.GetComponent<MusicController>().victory;
+        defeatMusic = world.GetComponent<MusicController>().defeat;
+        levelMusic = world.GetComponent<MusicController>().theme;
+
         _creaturesManager = FindObjectOfType<CreaturesManager>();
         _cameraTransition = FindObjectOfType<CameraTransition>();
         _battleStageController = FindObjectOfType<BattleStageController>();
@@ -86,6 +96,8 @@ public class GameController : MonoBehaviour
         if (_battleCurrentPlayerCreatures <= 0)
         {
             StartCoroutine(EndBattle());
+            world.GetComponent<AudioSource>().Stop();
+            world.GetComponent<AudioSource>().PlayOneShot(defeatMusic);
             player.GetComponent<Movement>().anim.SetInteger("battleWon", 0);
             player.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetInteger("battleWon", 0);
         }
@@ -104,11 +116,11 @@ public class GameController : MonoBehaviour
         if (_battleCurrentEnemyCreatures <= 0)
         {
             StartCoroutine(EndBattle());
+            world.GetComponent<AudioSource>().Stop();
+            world.GetComponent<AudioSource>().PlayOneShot(victoryMusic);
             player.GetComponent<Movement>().anim.SetInteger("battleWon", 1);
             player.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetInteger("battleWon", 1);
         }
-
-
     }
 
 
@@ -125,10 +137,12 @@ public class GameController : MonoBehaviour
         }
 
         // collect Items
-        yield return new WaitForSeconds(3); // TODO make this a variable value
+        yield return new WaitForSeconds(4); // TODO make this a variable value
 
         //take off player of the battle
         player.GetComponent<Movement>().inBattle = false;
+        world.GetComponent<AudioSource>().clip = levelMusic;
+        world.GetComponent<AudioSource>().Play();
         player.GetComponent<Movement>().anim.SetInteger("battleWon", -1);
         player.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetInteger("battleWon", -1);
 
