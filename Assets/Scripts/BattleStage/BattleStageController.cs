@@ -54,6 +54,21 @@ public class BattleStageController : MonoBehaviour
         }
     }
 
+    public void ResetFreeSpace()
+    {
+        _playerFieldFreePositions.Clear();
+        _enemyFieldFreePositions.Clear();
+
+        for (int i = 0; i < FieldSize; i++)
+        {
+            for (int j = 0; j < FieldSize; j++)
+            {
+                _playerFieldFreePositions.Add(i * FieldSize + j);
+                _enemyFieldFreePositions.Add(i * FieldSize + j);
+            }
+        }
+    }
+
     public void SetCreature(BattleStageFields field, CreatureController creature)
     {
         MoveCreatureToRandomPosition(field, creature, false);

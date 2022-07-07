@@ -5,6 +5,9 @@ public class PlayerInventoryController : MonoBehaviour
 {
     public List<ItemStats> items;
 
+    public ItemStats playerCreature1Item;
+    public ItemStats playerCreature2Item;
+
     public void AddItem(ItemStats item)
     {
         items.Add(item);
