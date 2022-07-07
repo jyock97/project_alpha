@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39ecc9f51060920498e2665f90c70647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: 0
   blackoutWaitTime: 1
+  bossPrefab: {fileID: 7220653017343040014, guid: 725de0c2a2f9fff43a08a3b0fbc32545, type: 3}

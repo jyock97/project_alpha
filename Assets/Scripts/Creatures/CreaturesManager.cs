@@ -17,10 +17,12 @@ public class CreaturesManager : MonoBehaviour
     [HideInInspector] public List<CreatureController> playerCreatures = new List<CreatureController>();
 
     private BattleStageController _battleStageController;
+    private PlayerInventoryController _playerInventoryController;
 
     private void Awake()
     {
         _battleStageController = FindObjectOfType<BattleStageController>();
+        _playerInventoryController = FindObjectOfType<PlayerInventoryController>();
     }
 
     public int InitPlayerCreatures()
@@ -32,12 +34,12 @@ public class CreaturesManager : MonoBehaviour
         playerCreatures.Clear();
 
         CreatureController creatureController = Instantiate(playerCreaturesData[0].prefab).GetComponent<CreatureController>();
-        creatureController.SetStats(playerCreaturesData[0].creatureStats);
+        creatureController.SetStats(playerCreaturesData[0].creatureStats, _playerInventoryController.playerCreature1Item);
         playerCreatures.Add(creatureController);
         _battleStageController.SetCreature(BattleStageController.BattleStageFields.PlayerField, creatureController);
 
         creatureController = Instantiate(playerCreaturesData[1].prefab).GetComponent<CreatureController>();
-        creatureController.SetStats(playerCreaturesData[1].creatureStats);
+        creatureController.SetStats(playerCreaturesData[1].creatureStats, _playerInventoryController.playerCreature2Item);
         playerCreatures.Add(creatureController);
         _battleStageController.SetCreature(BattleStageController.BattleStageFields.PlayerField, creatureController);
 

@@ -13,4 +13,9 @@ public class LevelController : MonoBehaviour
     {
         currentItemStrength = minItemStrength;
     }
+
+    public void UpdateItemStrength()
+    {
+        currentItemStrength = Mathf.Clamp(currentItemStrength + itemLevelIncreaseRatio, minItemStrength, maxItemStrength);
+    }
 }

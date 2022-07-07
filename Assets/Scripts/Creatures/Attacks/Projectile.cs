@@ -17,7 +17,6 @@ public class Projectile : MonoBehaviour
     private float _distanceToTarget;
     private float _timeToTarget;
     private float _currentTime;
-    private bool _explode;
 
     private void Update()
     {
@@ -27,7 +26,7 @@ public class Projectile : MonoBehaviour
             {
                 _currentTime += Time.deltaTime;
             }
-            else if (!_explode)
+            else
             {
                 _currentTime = _timeToTarget;
                 Destroy(gameObject);
