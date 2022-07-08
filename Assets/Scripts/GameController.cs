@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     }
 
     public GameState gameState;
+    public bool isBattleEnd;
 
     [SerializeField] private float blackoutWaitTime;
     [SerializeField] private GameObject bossPrefab;
@@ -53,6 +54,8 @@ public class GameController : MonoBehaviour
         gameState = GameState.GAMEPLAY;
         _battleStageController.InitializeBattleStage();
         _creaturesManager.InitPlayerCreatures();
+
+        isBattleEnd = true;
     }
 
     public void StartBattle(GameObject preCreature)
@@ -63,30 +66,34 @@ public class GameController : MonoBehaviour
 
     private IEnumerator IE_StartBattle()
     {
-        isBossDefeated = false;
-
-        // turn off player input
-        // camera transition black
-        _cameraTransition.FipBlackout();
-        yield return new WaitForSeconds(blackoutWaitTime);
-
-        // reset BattleStage free spaces
-        _battleStageController.ResetFreeSpace();
-        // set player creatures
-        _battleCurrentPlayerCreatures = _creaturesManager.InitPlayerCreatures();
-        // spawn enemies
-        _battleCurrentEnemyCreatures = _creatureGenerator.GenerateCreatures();
-        // camera transition 
-        _cameraTransition.FlipCameras();
-        _cameraTransition.FipBlackout();
-        // simulate battle
-        foreach (CreatureController creatureController in _creaturesManager.playerCreatures)
+        if (isBattleEnd)
         {
-            creatureController.StartBehaviour();
-        }
-        foreach (CreatureController creatureController in _creaturesManager.enemyCreatures)
-        {
-            creatureController.StartBehaviour();
+            isBossDefeated = false;
+            isBattleEnd = false;
+
+            // turn off player input
+            // camera transition black
+            _cameraTransition.FipBlackout();
+            yield return new WaitForSeconds(blackoutWaitTime);
+
+            // reset BattleStage free spaces
+            _battleStageController.ResetFreeSpace();
+            // set player creatures
+            _battleCurrentPlayerCreatures = _creaturesManager.InitPlayerCreatures();
+            // spawn enemies
+            _battleCurrentEnemyCreatures = _creatureGenerator.GenerateCreatures();
+            // camera transition 
+            _cameraTransition.FlipCameras();
+            _cameraTransition.FipBlackout();
+            // simulate battle
+            foreach (CreatureController creatureController in _creaturesManager.playerCreatures)
+            {
+                creatureController.StartBehaviour();
+            }
+            foreach (CreatureController creatureController in _creaturesManager.enemyCreatures)
+            {
+                creatureController.StartBehaviour();
+            }
         }
     }
 
@@ -126,63 +133,70 @@ public class GameController : MonoBehaviour
 
     private IEnumerator EndBattle()
     {
-        // stop creature behaviour
-        foreach (CreatureController creatureController in _creaturesManager.playerCreatures)
+        if (!isBattleEnd)
         {
-            creatureController.EndBehaviour();
-        }
-        foreach (CreatureController creatureController in _creaturesManager.enemyCreatures)
-        {
-            creatureController.EndBehaviour();
-        }
-
-        // collect Items
-        yield return new WaitForSeconds(4); // TODO make this a variable value
-
-        //take off player of the battle
-        player.GetComponent<Movement>().inBattle = false;
-        world.GetComponent<AudioSource>().clip = levelMusic;
-        world.GetComponent<AudioSource>().Play();
-        player.GetComponent<Movement>().anim.SetInteger("battleWon", -1);
-        player.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetInteger("battleWon", -1);
-
-        // camera transition black
-        _cameraTransition.FipBlackout();
-        yield return new WaitForSeconds(blackoutWaitTime);
-
-        if (isBossDefeated)
-        {
-            SceneManager.LoadScene("EndScene");
-            StopAllCoroutines();
-        }
-        else
-        {
-            // clear remaining creatures;
-            _creaturesManager.ClearEnemies();
-            _creaturesManager.InitPlayerCreatures();
-
-            // camera transition 
-            _cameraTransition.FlipCameras();
-            _cameraTransition.FipBlackout();
-
-            // Reset boss
-            StartCoroutine(ReSpawnBoss());
-
-            if (!_creatureGenerator.previousCreature.GetComponent<CreatureController>().isBoss)
+            isBattleEnd = true;
+            // stop creature behaviour
+            foreach (CreatureController creatureController in _creaturesManager.playerCreatures)
             {
-                GameObject previousSpawner = _creatureGenerator.previousCreature.GetComponent<CreatureIA>().parent;
-                if (previousSpawner.GetComponent<CreatureSpawner>())
-                    previousSpawner.GetComponent<CreatureSpawner>().deleteCreature();
+                creatureController.EndBehaviour();
+            }
+            foreach (CreatureController creatureController in _creaturesManager.enemyCreatures)
+            {
+                creatureController.EndBehaviour();
+            }
+
+            // collect Items
+            yield return new WaitForSeconds(4); // TODO make this a variable value
+
+            //take off player of the battle
+            player.GetComponent<Movement>().inBattle = false;
+            world.GetComponent<AudioSource>().clip = levelMusic;
+            world.GetComponent<AudioSource>().Play();
+            player.GetComponent<Movement>().anim.SetInteger("battleWon", -1);
+            player.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetInteger("battleWon", -1);
+
+            // camera transition black
+            _cameraTransition.FipBlackout();
+            yield return new WaitForSeconds(blackoutWaitTime);
+
+            if (isBossDefeated)
+            {
+                SceneManager.LoadScene("EndScene");
+                StopAllCoroutines();
+            }
+            else
+            {
+                // clear remaining creatures;
+                _creaturesManager.ClearEnemies();
+                _creaturesManager.InitPlayerCreatures();
+
+                // camera transition 
+                _cameraTransition.FlipCameras();
+                _cameraTransition.FipBlackout();
+
+                // Reset boss
+                StartCoroutine(ReSpawnBoss());
+
+                if (!_creatureGenerator.previousCreature.GetComponent<CreatureController>().isBoss)
+                {
+                    GameObject previousSpawner = _creatureGenerator.previousCreature.GetComponent<CreatureIA>().parent;
+                    if (previousSpawner.GetComponent<CreatureSpawner>())
+                        previousSpawner.GetComponent<CreatureSpawner>().deleteCreature();
+                }
             }
         }
     }
 
     private IEnumerator ReSpawnBoss()
     {
-        yield return new WaitForSeconds(3);
-        GameObject go = Instantiate(bossPrefab);
-        go.transform.position = new Vector3(-80, 8, 364);
-        go.GetComponent<CreatureIA>().enabled = true;
-        go.GetComponent<NavMeshAgent>().enabled = true;
+        if(GameObject.FindGameObjectWithTag("Boss") == null)
+        {
+            yield return new WaitForSeconds(3);
+            GameObject go = Instantiate(bossPrefab);
+            go.transform.position = new Vector3(-80, 8, 364);
+            go.GetComponent<CreatureIA>().enabled = true;
+            go.GetComponent<NavMeshAgent>().enabled = true;
+        }
     }
 }

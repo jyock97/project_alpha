@@ -32,6 +32,9 @@ public class CreatureController : MonoBehaviour
     public GameObject itemPrefab;
     public LayerMask targetLayerMask;
 
+    [SerializeField] private GameObject lifeBar;
+    private LifeBarController lifeBarController;
+
     private int splitValue = 12;
     private int tmLm = 13;
     private int tMLm = 17;
@@ -67,6 +70,7 @@ public class CreatureController : MonoBehaviour
         _battleStageController = FindObjectOfType<BattleStageController>();
         _creaturesManager = FindObjectOfType<CreaturesManager>();
         _levelController = FindObjectOfType<LevelController>();
+        lifeBarController = lifeBar.GetComponent<LifeBarController>();
 
         _animator = GetComponent<Animator>();
         _source = GetComponent<AudioSource>();
@@ -106,7 +110,6 @@ public class CreatureController : MonoBehaviour
             tmpVal1 = _levelController.globalCreatureStrength / splitValue;
         }
         
-        
         float tmpVal2 = tmpVal1 * (splitValue - 1);
         life = Random.Range(tmpVal2 / tMLm, tmpVal2 / tmLm);
 
@@ -117,6 +120,7 @@ public class CreatureController : MonoBehaviour
         attackSpeed = MathF.Round(tmpVal1 / damage, 3);
 
         CalculateCreatureStrength();
+        if (lifeBarController != null) lifeBarController.Init(life);
     }
 
     void insertTypeByNum(int i)
@@ -154,12 +158,15 @@ public class CreatureController : MonoBehaviour
         evasion = stats.evasion + statsModifiers.evasionMod;
         damage = stats.damage + statsModifiers.damageMod;
         attackSpeed = stats.attackSpeed + statsModifiers.attackSpeedMod;
+
+        if (lifeBarController != null) lifeBarController.Init(life);
     }
 
     public void StartBehaviour()
     {
         _isBehaving = true;
         UpdateAttackTime();
+        lifeBar.SetActive(true);
     }
 
     public void EndBehaviour()
@@ -211,7 +218,13 @@ public class CreatureController : MonoBehaviour
 
     public void DealtDamage(float damageAmount)
     {
+        if (_gameController.isBattleEnd)
+        {
+            return;
+        }
+
         life -= Mathf.Clamp(damageAmount - defense, 0, damageAmount);
+        if (lifeBarController != null) lifeBarController.SetLife(life);
 
         if (life <= 0)
         {
@@ -232,6 +245,7 @@ public class CreatureController : MonoBehaviour
         }
 
         _isDeath = true;
+        lifeBar.SetActive(false);
         if(itemPrefab != null)
         {
             GameObject go = Instantiate(itemPrefab);
