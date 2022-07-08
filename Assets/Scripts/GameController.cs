@@ -196,6 +196,7 @@ public class GameController : MonoBehaviour
 
     private IEnumerator ReSpawnBoss()
     {
+        yield return null;
         if(GameObject.FindGameObjectWithTag("Boss") == null)
         {
             yield return new WaitForSeconds(3);
