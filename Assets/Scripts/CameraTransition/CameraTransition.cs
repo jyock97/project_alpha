@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CameraTransition : MonoBehaviour
 {
+    public GameObject battleCam;
     [SerializeField] GameObject worldCam;
-    [SerializeField] GameObject battleCam;
 
     [SerializeField] GameObject canvas;
 
