@@ -8,7 +8,6 @@ public class MusicController : MonoBehaviour
     [SerializeField] public AudioClip battle, victory, defeat;
 
     AudioSource source;
-    bool endIntro = false;
 
     void Awake()
     {
@@ -27,8 +26,6 @@ public class MusicController : MonoBehaviour
             source.clip = theme;
             source.loop = true;
             source.Play();
-
-            endIntro = true;
         }
     }
 }

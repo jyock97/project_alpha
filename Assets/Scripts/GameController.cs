@@ -25,7 +25,8 @@ public class GameController : MonoBehaviour
     private int _battleCurrentPlayerCreatures;
     private int _battleCurrentEnemyCreatures;
 
-    private GameObject player;
+    GameObject player;
+    GameObject fakePlayer;
     private bool isBossDefeated;
 
     public GameObject world;
@@ -46,7 +47,8 @@ public class GameController : MonoBehaviour
         _creatureGenerator = FindObjectOfType<CreatureGenerator>();
         _levelController = FindObjectOfType<LevelController>();
 
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.Find("Player");
+        fakePlayer = GameObject.Find("FakePlayer");
     }
 
     private void Start()
@@ -151,10 +153,14 @@ public class GameController : MonoBehaviour
 
             //take off player of the battle
             player.GetComponent<Movement>().inBattle = false;
-            world.GetComponent<AudioSource>().clip = levelMusic;
-            world.GetComponent<AudioSource>().Play();
             player.GetComponent<Movement>().anim.SetInteger("battleWon", -1);
             player.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetInteger("battleWon", -1);
+
+            player.GetComponent<AudioListener>().enabled = false;
+            fakePlayer.GetComponent<AudioListener>().enabled = true;
+
+            world.GetComponent<AudioSource>().clip = levelMusic;
+            world.GetComponent<AudioSource>().Play();
 
             // camera transition black
             _cameraTransition.FipBlackout();

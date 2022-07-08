@@ -28,6 +28,9 @@ public class CreatureIA : MonoBehaviour
     GameObject world;
     AudioClip battleMusic;
 
+    GameObject player;
+    GameObject fakePlayer;
+
     void Start()
     {
         if (!this.GetComponent<CreatureController>().isBoss)
@@ -41,6 +44,10 @@ public class CreatureIA : MonoBehaviour
         battleMusic = world.GetComponent<MusicController>().battle;
 
         source = GetComponent<AudioSource>();
+
+        player = GameObject.Find("Player");
+        fakePlayer = GameObject.Find("FakePlayer");
+
 
         StartPatrolState();
     }
@@ -144,6 +151,7 @@ public class CreatureIA : MonoBehaviour
             {
                 navAgent.isStopped = true;
                 source.Pause();
+
                 collision.gameObject.GetComponent<Movement>().fakePlayer.GetComponent<Animator>().SetTrigger("surprised");
                 collision.gameObject.GetComponent<Movement>().anim.SetTrigger("surprised");
                 collision.gameObject.GetComponent<Movement>().inBattle = true;
@@ -151,6 +159,9 @@ public class CreatureIA : MonoBehaviour
                 world.GetComponent<AudioSource>().Stop();
                 world.GetComponent<AudioSource>().clip = battleMusic;
                 world.GetComponent<AudioSource>().Play();
+
+                player.GetComponent<AudioListener>().enabled = false;
+                fakePlayer.GetComponent<AudioListener>().enabled = true;
 
                 StartCoroutine(WaitTimeToTransition());
             }
