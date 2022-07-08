@@ -6,6 +6,8 @@ TagManager:
   tags:
   - FakePlayerPosition
   - BattleStage
+  - BattleCamera
+  - Boss
   layers:
   - Default
   - TransparentFX
