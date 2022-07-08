@@ -201,7 +201,6 @@ public class CreatureController : MonoBehaviour
             go.GetComponent<Projectile>().InitProjectile(currentCreature.transform.position, targetLayerMask, damage);
             currentCreature.SetTarget();
 
-            _source.spatialBlend = 0;
             _source.loop = false;
             _source.clip = attackSound;
             _source.Play();
